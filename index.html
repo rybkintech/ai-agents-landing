@@ -168,6 +168,20 @@
   .sc .ask{font-style:italic;color:var(--text-2);background:var(--card-2);border-left:3px solid var(--brand);padding:8px 12px;border-radius:0 10px 10px 0;font-size:15px}
   .sc .why{font-size:14.5px;color:var(--text-2)}
   .sc .why b{color:var(--text)}
+  .mass{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0 0 22px}
+  @media (max-width:980px){.mass{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:600px){.mass{grid-template-columns:repeat(2,1fr)}}
+  .mass div{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 12px;font-size:13px;color:var(--text-2)}
+  .mass div b{display:block;font-size:13.5px;color:var(--text);margin-bottom:6px;line-height:1.25}
+  .mass div span{display:block;font-size:12px;color:var(--muted)}
+  .mass div span strong{color:var(--text);font-size:15px;font-weight:800;margin-right:2px}
+  .mass div.hot{border-color:var(--brand);background:var(--brand-soft)}
+  .mass div.hot span strong.g{color:var(--brand-dark)}
+  .xref{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:auto;padding-top:10px;border-top:1px dashed var(--border)}
+  .xref b{flex:0 0 100%;font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:800}
+  .xref span{font-size:12.5px;font-weight:700;background:var(--brand-soft);color:var(--brand-deep);border-radius:999px;padding:4px 10px}
+  .xref span.hot{background:var(--grad);color:#fff}
+  .xref span.none{background:var(--card-2);color:var(--muted);border:1px solid var(--border);font-weight:600}
 
   /* features */
   .feature{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;padding:34px 0;border-top:1px solid var(--border)}
@@ -454,6 +468,14 @@
       <span>Найти</span><i>→</i><span>Узнать</span><i>→</i><span>Выбрать</span><i>→</i><span>Сделать</span><i>→</i><span>Добраться</span><i>→</i><span>Спланировать</span><i>→</i><span>Договориться</span><i>→</i><span>Разобраться</span><i>→</i><span>Каждый день</span><i>→</i><span>Предложить</span>
       <span class="cross">Сквозное: одна строка для любого запроса, текстом или голосом</span><span class="cross">Обратная сторона: компания видит спрос из агента и управляет им</span>
     </div>
+    <p style="font-size:14px;color:var(--muted);margin:0 0 10px"><b style="color:var(--text)">Массовые сценарии 2ГИС сегодня</b> — использование ключевых функций B2C-продукта в России. Внизу каждой карточки отмечено, на какой из них опирается AI-сценарий.</p>
+    <div class="mass">
+      <div class="hot"><b>Друзья на карте</b><span><strong>2,8</strong>млн DAU</span><span><strong>7,0</strong>млн MAU</span><span><strong class="g">41%</strong>DAU/MAU — самая «липкая»</span></div>
+      <div><b>Дискавери-поиск: выбрать место на карте</b><span><strong>2,2</strong>млн DAU</span><span><strong>30</strong>млн MAU</span><span><strong>7%</strong>DAU/MAU</span></div>
+      <div><b>Маршрут на авто</b><span><strong>1,9</strong>млн DAU</span><span><strong>15</strong>млн MAU</span><span><strong>13%</strong>DAU/MAU</span></div>
+      <div><b>Маршрут на общественном транспорте</b><span><strong>1,0</strong>млн DAU</span><span><strong>9,0</strong>млн MAU</span><span><strong>11%</strong>DAU/MAU</span></div>
+      <div><b>Маршрут пешком</b><span><strong>0,7</strong>млн DAU</span><span><strong>8,0</strong>млн MAU</span><span><strong>9%</strong>DAU/MAU</span></div>
+    </div>
     <div class="legend" style="margin:0 0 14px"><span><i style="background:var(--run)"></i>Решается без агентов — задачу закрывает текущий продукт, AI добавляет диалог</span><span><i style="background:var(--warn)"></i>Частично работает — агент запущен, но покрытие или качество ограничены</span><span><i style="background:var(--risk)"></i>Никак не решается — сценария в продукте нет</span></div>
     <div class="scen">
       <div class="sc">
@@ -461,66 +483,77 @@
         <h3>Найти место под задачу, а не под рубрику</h3>
         <div class="ask">«Куда сходить вечером с детьми?» · «Где недорого и вкусно поесть рядом?»</div>
         <p class="why"><b>Почему через AI.</b> Задача формулируется словами и контекстом, а не фильтрами. Агент понимает намерение и отвечает подбором с аргументами, а не списком рубрик.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span>Дискавери-поиск · 30 млн MAU</span></div>
       </div>
       <div class="sc">
         <div class="top"><span class="step">02 · Узнать</span><span class="pill pill-warn">Частично работает</span></div>
         <h3>Узнать о месте то, чего нет в карточке</h3>
         <div class="ask">«Есть ли парковка и можно ли с собакой?» · «Какие очереди на этой заправке?»</div>
         <p class="why"><b>Почему через AI.</b> Карточка статична, а вопросы конкретные и редкие. Агент собирает ответ из отзывов, сайта, фото и внутренних данных и предлагает следующий шаг. Цель — ответ виден прямо в карточке, без перехода в чат.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span>Дискавери-поиск · 30 млн MAU</span></div>
       </div>
       <div class="sc">
         <div class="top"><span class="step">03 · Выбрать</span><span class="pill pill-warn">Частично работает</span></div>
         <h3>Выбрать товар, а не магазин</h3>
         <div class="ask">«Подбери недорогой робот-пылесос» · «Где купить детское автокресло сегодня рядом?»</div>
         <p class="why"><b>Почему через AI.</b> Каталог ведёт в магазин, а человеку нужен товар: категория, бюджет, характеристики. Агент уточняет запрос, показывает предложения магазинов рядом и ведёт к действию — сайт, маркетплейс или маршрут в магазин.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span>Дискавери-поиск · 30 млн MAU</span></div>
       </div>
       <div class="sc">
         <div class="top"><span class="step">04 · Сделать</span><span class="pill pill-warn">Частично работает</span></div>
         <h3>Записаться, забронировать и оплатить, не выходя из 2ГИС</h3>
         <div class="ask">«Запиши меня на маникюр завтра вечером» · «Столик на троих в субботу» · «Отель на выходные»</div>
         <p class="why"><b>Почему через AI.</b> У большинства бизнесов нет онлайн-записи: в красоте API есть у 30% салонов, телефон у 94%. Агент сам выбирает способ — API, сайт или звонок — и доводит до подтверждённой записи и оплаты в чате.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span>Дискавери-поиск · 30 млн MAU</span></div>
       </div>
       <div class="sc">
         <div class="top"><span class="step">05 · Добраться</span><span class="pill pill-r">Решается без агентов</span></div>
         <h3>Добраться удобным способом и получить помощь в дороге</h3>
         <div class="ask">«На чём быстрее до вокзала?» · «Домой с заездом на заправку и в Пятёрочку» · за рулём, голосом</div>
         <p class="why"><b>Почему через AI.</b> Выбор способа с учётом пробок и цены, маршруты с остановками и смена плана на ходу — это диалог, а не форма. За рулём текст недоступен, поэтому голос здесь условие сценария.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span>Маршрут на авто · 15 млн MAU</span><span>Общественный транспорт · 9 млн MAU</span><span>Пешком · 8 млн MAU</span></div>
       </div>
       <div class="sc">
         <div class="top"><span class="step">06 · Спланировать</span><span class="pill pill-risk">Никак не решается</span></div>
         <h3>Спланировать день, выходные или поездку в один ответ</h3>
         <div class="ask">«Составь план на субботу с ребёнком» · «День в Казани» · «Поездка на выходные в Питер»</div>
         <p class="why"><b>Почему через AI.</b> План — это несколько мест, время, маршрут и бюджет. Сегодня это склейка из пяти приложений. Агент собирает план целиком, подкручивает по пожеланиям и сохраняет, чтобы к нему вернуться.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span>Дискавери-поиск · 30 млн MAU</span><span>Маршрут на авто · 15 млн MAU</span><span>Общественный транспорт · 9 млн MAU</span></div>
       </div>
       <div class="sc">
         <div class="top"><span class="step">07 · Договориться</span><span class="pill pill-risk">Никак не решается</span></div>
         <h3>Забронировать место на компанию и поделиться бронью</h3>
         <div class="ask">«Забронируй столик в Шоколаднице на троих и добавь бронь супруге и сыну» · «Собери голоса, куда идём в субботу»</div>
         <p class="why"><b>Боль.</b> Компания договаривается в чате, а бронирует кто-то один: остальные не видят время и адрес, переспрашивают, пересылают скриншоты; при смене планов нужно предупреждать каждого.<br><b>Почему через AI.</b> Агент собирает голоса в чате, бронирует на всех и делится бронью с каждым: у всех своя копия с адресом, временем и маршрутом, изменения синхронизируются.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span class="hot">Друзья на карте · 41% DAU/MAU</span><span>Дискавери-поиск · 30 млн MAU</span></div>
       </div>
       <div class="sc">
         <div class="top"><span class="step">08 · Разобраться</span><span class="pill pill-risk">Никак не решается</span></div>
         <h3>Разобраться с городскими задачами «как сделать»</h3>
         <div class="ask">«Как записаться в поликлинику по полису?» · «Какие документы нужны в МФЦ для замены паспорта?»</div>
         <p class="why"><b>Почему через AI.</b> Справочный вопрос требует не списка организаций, а пошагового ответа с привязкой к месту: куда идти, что взять, как записаться.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span class="none">Новый спрос — массового сценария под него в продукте нет</span></div>
       </div>
       <div class="sc">
         <div class="top"><span class="step">09 · Каждый день</span><span class="pill pill-risk">Никак не решается</span></div>
         <h3>Ежедневный помощник в городе</h3>
         <div class="ask">«Что у меня сегодня?» · «Напомни про запись и построй маршрут» · «Куда сходить, где мы с друзьями ещё не были?»</div>
         <p class="why"><b>Почему через AI.</b> Сегодня 2ГИС открывают под задачу и закрывают. Помощник, у которого хранятся планы, записи, брони и билеты, который помнит историю и знает круг, становится поводом открывать приложение каждый день — без нового поиска.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span class="hot">Друзья на карте · 41% DAU/MAU</span><span>Дискавери-поиск · 30 млн MAU</span><span>Маршрут на авто · 15 млн MAU</span></div>
       </div>
       <div class="sc">
         <div class="top"><span class="step">10 · Предложить</span><span class="pill pill-risk">Никак не решается</span></div>
         <h3>Помощник предлагает сам, уместно и ненавязчиво</h3>
         <div class="ask">«Заедем в кофейню по дороге на работу?» · «Впереди пробка — предлагаю объехать» · «Завтра запись к мастеру в 19:00»</div>
         <p class="why"><b>Почему через AI.</b> Сегодня каждый сценарий начинается с запроса. Агент знает контекст — маршрут, время, историю записей и планы — и может предложить следующий шаг до того, как человек его сформулировал. Граница между полезным и навязчивым задаётся данными и обратной связью.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span>Маршрут на авто · 15 млн MAU</span><span>Общественный транспорт · 9 млн MAU</span><span class="hot">Друзья на карте · 41% DAU/MAU</span></div>
       </div>
       <div class="sc" style="grid-column:1 / -1">
         <div class="top"><span class="step">11 · Для бизнеса</span><span class="pill pill-risk">Никак не решается</span></div>
         <h3>Компания получает клиентов из агента и управляет этим</h3>
         <div class="ask">«Сколько записей пришло из 2ГИС за месяц?» · «О чём спрашивают про мою компанию?» · «Подключить онлайн-запись без своего сайта»</div>
         <p class="why"><b>Почему через AI.</b> Треть платной базы общается с агентом, но бизнес этого не видит: в ЛК есть клики и звонки, а вопросов и записей из чата нет. Агент становится каналом живого спроса: компания видит обращения и записи, подключает онлайн-запись без своей витрины и управляет слотами. Без этого нет аргумента для рекламодателя и данных для монетизации.</p>
+        <div class="xref"><b>Пересечение с массовыми сценариями 2ГИС</b><span>Дискавери-поиск · 30 млн MAU</span></div>
       </div>
     </div>
     <p class="footnote">Набор и приоритеты сценариев — синтез из стратегии, плана Q1 и презентации; сверить с командой.</p>
