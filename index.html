@@ -1,0 +1,1270 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>ИИ-помощник 2ГИС · Стратегия 2027</title>
+<meta name="description" content="Стратегия трека AI-агентов 2ГИС на 2027 год: статус, принципы, десять треков, экосистема Сбера, риски и образ результата.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    color-scheme:light;
+    --brand:#2fa84f; --brand-dark:#1f8a3b; --brand-deep:#176b2d; --brand-soft:#e6f5e9; --brand-soft-2:#d3eed9;
+    --grad: linear-gradient(135deg,#6ccf43 0%,#2fa84f 55%,#1f8a3b 100%);
+    --bg:#f4f7f5; --bg-2:#ffffff; --card:#ffffff; --card-2:#f8faf8;
+    --text:#161a17; --text-2:#3d463f; --muted:#6a756d; --border:#e2e8e3; --border-2:#cfd9d1;
+    --grow:#2b86d6; --grow-soft:#e5f0fb; --run:#7a858c; --run-soft:#eceff1;
+    --risk:#d9534f; --risk-soft:#fdeceb; --warn:#d48a12; --warn-soft:#fff3df; --ok:#2fa84f; --ok-soft:#e6f5e9;
+    --shadow:0 1px 2px rgba(20,30,22,.05),0 8px 24px rgba(20,30,22,.06);
+    --shadow-lg:0 2px 4px rgba(20,30,22,.06),0 24px 48px rgba(20,30,22,.10);
+    --radius:18px; --radius-sm:12px;
+    --maxw:1180px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:72px}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:"Manrope",-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+  img{max-width:100%;display:block}
+  a{color:var(--brand-dark)}
+  h1,h2,h3,h4{margin:0;line-height:1.15;letter-spacing:-.01em}
+  h1{font-size:clamp(34px,5vw,58px);font-weight:800}
+  h2{font-size:clamp(26px,3.4vw,38px);font-weight:800}
+  h3{font-size:20px;font-weight:700}
+  h4{font-size:16px;font-weight:700}
+  p{margin:0}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+  @media (max-width:600px){.wrap{padding:0 16px}}
+  section{padding:72px 0}
+  @media (max-width:700px){section{padding:52px 0}}
+  .muted{color:var(--muted)}
+  .lead{font-size:clamp(18px,2vw,21px);color:var(--text-2);max-width:820px}
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-dark)}
+  .eyebrow::before{content:"";width:22px;height:3px;border-radius:2px;background:var(--grad)}
+  .sec-head{display:flex;flex-direction:column;gap:14px;margin-bottom:36px;max-width:860px}
+  .pill{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:999px;font-size:12.5px;font-weight:700;line-height:1.3;white-space:nowrap}
+  .pill-t{background:var(--brand-soft);color:var(--brand-deep)}
+  .pill-g{background:var(--grow-soft);color:var(--grow)}
+  .pill-r{background:var(--run-soft);color:var(--run)}
+  .pill-q{background:var(--card-2);color:var(--text-2);border:1px solid var(--border)}
+  .pill-risk{background:var(--risk-soft);color:var(--risk)}
+  .pill-warn{background:var(--warn-soft);color:var(--warn)}
+  .pill-ok{background:var(--ok-soft);color:var(--ok)}
+  .pill-brand{background:var(--grad);color:#fff}
+
+  /* nav */
+  .nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+  .nav .wrap{display:flex;align-items:center;gap:18px;height:56px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:15px;white-space:nowrap}
+  .brand i{width:26px;height:26px;border-radius:8px;background:var(--grad);display:grid;place-items:center;color:#fff;font-style:normal;font-size:13px}
+  .nav-links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-left:auto}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{text-decoration:none;color:var(--text-2);font-size:14px;font-weight:600;padding:7px 11px;border-radius:9px;white-space:nowrap}
+  .nav-links a:hover{background:var(--brand-soft);color:var(--brand-deep)}
+
+  /* hero */
+  .hero{padding:64px 0 48px;position:relative;overflow:hidden;background:
+    radial-gradient(900px 500px at 85% 20%,color-mix(in srgb,var(--brand) 18%,transparent),transparent 60%),var(--bg-2)}
+  .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:40px;align-items:center}
+  @media (max-width:860px){.hero-grid{grid-template-columns:1fr}}
+  .hero-text{display:flex;flex-direction:column;gap:22px}
+  .hero h1 .arrow{color:var(--brand);font-weight:800}
+  .hero-img{position:relative}
+  .hero-img img{border-radius:28px;box-shadow:var(--shadow-lg);width:100%;max-width:520px;margin:0 auto;mask-image:linear-gradient(180deg,#000 85%,transparent)}
+  .nsm{display:inline-flex;align-items:center;gap:12px;background:var(--grad);color:#fff;padding:12px 18px;border-radius:14px;font-weight:700;box-shadow:var(--shadow);align-self:flex-start}
+  .nsm b{font-size:22px;font-weight:800}
+  .hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:8px}
+  @media (max-width:600px){.hero-stats{grid-template-columns:1fr 1fr}.hero-stats .hstat:last-child{grid-column:1 / -1}}
+  .hstat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px}
+  .hstat b{display:block;font-size:22px;font-weight:800;color:var(--brand-dark)}
+  .hstat span{font-size:13px;color:var(--muted)}
+  .hstat em{font-style:normal;color:var(--brand-dark);font-weight:600}
+
+  /* generic cards */
+  .grid{display:grid;gap:16px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  .g4{grid-template-columns:repeat(4,1fr)}
+  @media (max-width:980px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:620px){.g4,.g3,.g2{grid-template-columns:1fr}}
+  .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
+  .card.flat{box-shadow:none;background:var(--card-2)}
+  .card .num{font-size:34px;font-weight:800;color:var(--brand-dark);line-height:1.05}
+  .card .num small{font-size:16px;font-weight:700;margin-left:4px}
+  .card .delta{color:var(--brand-dark);font-weight:700;font-size:14px}
+  .card ul{margin:0;padding-left:18px;color:var(--text-2);font-size:15.5px}
+  .card ul li{margin:4px 0}
+  .card .quote{font-style:italic;color:var(--text-2);background:var(--card-2);border-left:3px solid var(--brand);padding:8px 12px;border-radius:0 10px 10px 0;font-size:15px}
+  .callout{background:var(--grad);color:#fff;border-radius:var(--radius);padding:26px 28px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;gap:8px}
+  .callout h3{color:#fff}
+  .callout p{color:rgba(255,255,255,.92)}
+  .note{background:var(--warn-soft);border:1px solid color-mix(in srgb,var(--warn) 35%,transparent);color:var(--text-2);border-radius:var(--radius-sm);padding:12px 16px;font-size:14.5px}
+  .note b{color:var(--warn)}
+  .footnote{font-size:13px;color:var(--muted);margin-top:12px}
+  .agent-icon{width:40px;height:40px;border-radius:12px;background:var(--brand-soft);display:grid;place-items:center;color:var(--brand-dark);font-weight:800;font-size:18px}
+
+
+  /* principles */
+  .principle{counter-increment:p;position:relative;padding-top:54px}
+  .principle::before{content:counter(p,decimal-leading-zero);position:absolute;top:18px;left:22px;font-size:13px;font-weight:800;color:var(--brand-dark);background:var(--brand-soft);padding:3px 9px;border-radius:999px}
+  .principles{counter-reset:p}
+  .principle p{font-size:15px;color:var(--text-2)}
+
+  /* takty */
+  .takty{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;position:relative}
+  @media (max-width:800px){.takty{grid-template-columns:1fr}}
+  .takt{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column;gap:10px}
+  .takt .k{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--brand-dark)}
+  .takt .k i{width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;display:grid;place-items:center;font-style:normal;font-size:13px}
+  .takt p{color:var(--text-2);font-size:15.5px}
+  .metrics{display:grid;grid-template-columns:1.1fr 1fr;gap:16px;margin-top:24px}
+  @media (max-width:800px){.metrics{grid-template-columns:1fr}}
+  .metrics .card ul{font-size:15px}
+
+  /* Q1 plan */
+  .ap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:24px;display:flex;flex-direction:column;gap:18px;margin-top:16px}
+  .ap-head{display:flex;flex-wrap:wrap;align-items:center;gap:12px}
+  .ap-head h3{font-size:24px}
+  .ap-head .grow-what{margin-left:auto;font-size:14px;color:var(--text-2);background:var(--brand-soft);padding:6px 12px;border-radius:999px;font-weight:600}
+  .ap-cols{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  @media (max-width:980px){.ap-cols{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:560px){.ap-cols{grid-template-columns:1fr}}
+  .ap-cols div{background:var(--card-2);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--text-2)}
+  .ap-cols b{display:block;font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--brand-deep);margin-bottom:5px}
+  .ap-groups{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  @media (max-width:860px){.ap-groups{grid-template-columns:1fr}}
+  .apg{border:1px solid var(--border);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+  .apg h4{font-size:15px}
+  .apg p{font-size:13.5px;color:var(--muted)}
+  .init{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;font-size:14px;padding:7px 0;border-top:1px dashed var(--border)}
+  .init:first-of-type{border-top:0}
+  .init span.n{color:var(--text)}
+  .init small{display:block;color:var(--muted);font-size:12.5px}
+  .init .pill{flex:0 0 auto}
+  .kpi-table{min-width:640px}
+  .kpi-table th:not(:first-child),.kpi-table td:not(:first-child){text-align:center;white-space:nowrap}
+  .kpi-table td:first-child{color:var(--text-2)}
+  .nsm-note{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:8px}
+  @media (max-width:980px){.nsm-note{grid-template-columns:repeat(2,1fr) !important}}
+  @media (max-width:600px){.nsm-note{grid-template-columns:1fr !important}}
+  .nsm-note div{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:14px;color:var(--text-2)}
+  .nsm-note b{display:block;color:var(--brand-dark);font-size:15px;margin-bottom:3px}
+
+  /* scenarios */
+  .lifecycle{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 26px}
+  .lifecycle span{background:var(--card);border:1px solid var(--border);border-radius:999px;padding:8px 14px;font-weight:700;font-size:14px;box-shadow:var(--shadow)}
+  .lifecycle i{color:var(--brand);font-style:normal;font-weight:800}
+  .lifecycle span.cross{background:var(--brand-soft);border-color:transparent;color:var(--brand-deep)}
+  .scen{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media (max-width:860px){.scen{grid-template-columns:1fr}}
+  .sc{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;display:flex;flex-direction:column;gap:10px;position:relative}
+  .sc.focus{border-color:var(--brand);box-shadow:0 0 0 3px var(--brand-soft),var(--shadow)}
+  .sc .top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .sc .step{font-size:12px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-deep)}
+  .sc .top .pill{margin-left:auto;font-size:13.5px;padding:6px 13px;border-width:1px;border-style:solid;border-color:currentColor}
+  .sc .top .pill::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+  .sc h3{font-size:21px}
+  .sc .ask{font-style:italic;color:var(--text-2);background:var(--card-2);border-left:3px solid var(--brand);padding:8px 12px;border-radius:0 10px 10px 0;font-size:15px}
+  .sc .why{font-size:14.5px;color:var(--text-2)}
+  .sc .why b{color:var(--text)}
+
+  /* features */
+  .feature{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;padding:34px 0;border-top:1px solid var(--border)}
+  .feature:first-of-type{border-top:0}
+  .feature.rev .f-img{order:-1}
+  @media (max-width:860px){.feature{grid-template-columns:1fr;gap:22px}.feature.rev .f-img{order:0}}
+  .feature h3{font-size:24px;margin:8px 0 6px}
+  .feature ul{margin:10px 0 0;padding-left:18px;color:var(--text-2)}
+  .feature ul li{margin:5px 0}
+  .feature .ex{margin-top:14px;background:var(--brand-soft);border-radius:var(--radius-sm);padding:12px 14px;font-size:15px}
+  .feature .ex b{display:block;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--brand-deep);margin-bottom:4px}
+  .f-img img{border-radius:20px;box-shadow:var(--shadow-lg);cursor:zoom-in;background:#fff}
+  .f-img .cap{font-size:13px;color:var(--muted);margin-top:8px;text-align:center}
+  .strip{margin:24px 0 8px}
+  .strip img{border-radius:20px;box-shadow:var(--shadow-lg);cursor:zoom-in;width:100%}
+  .strip-caps{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:10px;font-size:13px;color:var(--muted);text-align:center}
+  @media (max-width:860px){.strip-caps{grid-template-columns:repeat(auto-fit,minmax(150px,1fr));text-align:left}}
+
+  /* gantt */
+  .gantt-wrap{overflow-x:auto;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+  .gantt{min-width:860px;display:grid;grid-template-columns:270px repeat(6,1fr);row-gap:6px;align-items:center;position:relative}
+  .gantt .qh{font-size:12px;font-weight:800;color:var(--muted);text-align:center;padding:6px 0 10px;border-bottom:1px solid var(--border);letter-spacing:.04em}
+  .gantt .qh.y27{color:var(--brand-dark)}
+  .gantt .grp{grid-column:1 / -1;font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.08em;color:var(--brand-dark);padding:14px 0 4px;border-bottom:1px dashed var(--border)}
+  .gantt .lbl{grid-column:1;font-size:14px;font-weight:600;color:var(--text);padding:4px 10px 4px 0;line-height:1.25}
+  .gantt .lbl small{display:block;color:var(--muted);font-weight:500;font-size:12px}
+  .gantt .bar{height:26px;border-radius:8px;display:flex;align-items:center;padding:0 10px;font-size:12px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin:0 3px}
+  .bar.t{background:var(--grad)}
+  .bar.g{background:var(--grow)}
+  .bar.r{background:var(--run)}
+  .bar.open-start{border-top-left-radius:0;border-bottom-left-radius:0;mask-image:linear-gradient(90deg,transparent,#000 14%)}
+  .legend{display:flex;flex-wrap:wrap;gap:14px;font-size:13.5px;color:var(--text-2);margin:14px 0 0}
+  .legend i{display:inline-block;width:14px;height:14px;border-radius:4px;vertical-align:-2px;margin-right:6px}
+  .load{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}
+  @media (max-width:620px){.load{grid-template-columns:repeat(2,1fr)}}
+  .load div{background:var(--card-2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 14px}
+  .load b{display:block;font-size:22px;font-weight:800;color:var(--brand-dark)}
+  .load span{font-size:13px;color:var(--muted)}
+  .load div.peak{border-color:var(--warn);background:var(--warn-soft)}
+  .load div.peak b{color:var(--warn)}
+
+  /* tracks */
+  .tracks{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:28px}
+  @media (max-width:860px){.tracks{grid-template-columns:1fr}}
+  .track{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:22px;display:flex;flex-direction:column;gap:12px}
+  .track .th{display:flex;align-items:flex-start;gap:12px}
+  .track .th .n{flex:0 0 auto;width:38px;height:38px;border-radius:11px;background:var(--grad);color:#fff;font-weight:800;display:grid;place-items:center;font-size:14px}
+  .track .th h3{font-size:19px}
+  .track .th .q{font-size:13px;color:var(--muted);font-weight:600;margin-top:2px}
+  .track > p{font-size:15px;color:var(--text-2)}
+  .track .items{display:flex;flex-direction:column;gap:8px;margin-top:2px}
+  .item{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start;background:var(--card-2);border:1px solid var(--border);border-radius:12px;padding:10px 12px}
+  .item b{font-size:14.5px;display:block}
+  .item span{font-size:13.5px;color:var(--text-2)}
+  .item .tags{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
+  .track.wide{grid-column:1 / -1}
+  .flag{font-size:12.5px;color:var(--warn);font-weight:700}
+
+  /* partners */
+  .partner h3{display:flex;align-items:center;gap:10px}
+  .partner .role{font-size:13px;color:var(--muted);font-weight:600}
+
+  /* CA */
+  .ca-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media (max-width:620px){.ca-stats{grid-template-columns:1fr}}
+  table{width:100%;border-collapse:collapse;font-size:14.5px}
+  th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--border);vertical-align:top}
+  th{font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:800}
+  td.c,th.c{text-align:center}
+  tr.goal td{font-weight:700}
+  .limit{display:flex;flex-direction:column;gap:8px}
+  .limit .prop{font-size:13px;color:var(--muted);background:var(--card-2);border-radius:10px;padding:8px 10px;border:1px dashed var(--border-2)}
+  .sbol{display:grid;grid-template-columns:1.2fr 1fr;gap:16px}
+  @media (max-width:860px){.sbol{grid-template-columns:1fr}}
+  .flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:14px;margin:8px 0}
+  .flow span{background:var(--card-2);border:1px solid var(--border);border-radius:10px;padding:8px 12px;font-weight:600}
+  .flow i{color:var(--muted);font-style:normal}
+  .flow span.bad{border-color:var(--risk);color:var(--risk)}
+  .table-wrap{overflow-x:auto}
+  .risk-table{min-width:760px}
+  .risk-table td:first-child{width:46%}
+  .risk-table .st{display:flex;flex-direction:column;gap:4px;align-items:flex-start}
+  .risk-table .cons{font-size:13.5px;color:var(--text-2)}
+  .risk-filter{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 14px}
+  .risk-filter button{font:inherit;font-size:13.5px;font-weight:700;padding:7px 13px;border-radius:999px;border:1px solid var(--border-2);background:var(--card);color:var(--text-2);cursor:pointer}
+  .risk-filter button.on{background:var(--brand-soft);border-color:var(--brand);color:var(--brand-deep)}
+
+  /* challenges */
+  .challenge{counter-increment:c;gap:8px}
+  .challenge h4{display:flex;gap:10px;align-items:baseline}
+  .challenge h4::before{content:counter(c);flex:0 0 auto;width:26px;height:26px;border-radius:8px;background:var(--risk-soft);color:var(--risk);font-size:13px;display:grid;place-items:center;font-weight:800}
+  .challenges{counter-reset:c}
+  .challenge p{font-size:14.5px;color:var(--text-2)}
+  .challenge .ans{font-size:14px;color:var(--brand-deep);font-weight:600;background:var(--brand-soft);padding:8px 10px;border-radius:10px;margin-top:auto}
+
+  /* result */
+  .result{display:grid;grid-template-columns:1.15fr .85fr;gap:16px}
+  @media (max-width:860px){.result{grid-template-columns:1fr}}
+  .verbs{display:flex;flex-direction:column;gap:10px}
+  .verb{display:grid;grid-template-columns:120px 1fr;gap:12px;align-items:start;padding:12px 0;border-bottom:1px solid var(--border)}
+  .verb:last-child{border-bottom:0}
+  .verb b{font-size:18px;color:var(--brand-dark)}
+  .verb span{font-size:15px;color:var(--text-2)}
+  @media (max-width:500px){.verb{grid-template-columns:1fr;gap:4px}}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+  @media (max-width:980px){.gallery{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:620px){.gallery{grid-template-columns:repeat(2,1fr)}}
+  .shot{border-radius:12px;overflow:hidden;border:1px solid var(--border);background:#fff;box-shadow:var(--shadow);cursor:zoom-in;display:flex;flex-direction:column}
+  .shot img{aspect-ratio:16/9;object-fit:cover;width:100%}
+  .shot span{font-size:12.5px;color:var(--muted);padding:8px 10px;background:var(--card)}
+
+  /* open questions */
+  .oq li{margin:6px 0;color:var(--text-2)}
+
+  /* footer */
+  footer{padding:48px 0 64px;border-top:1px solid var(--border);font-size:14px;color:var(--muted)}
+  footer ul{padding-left:18px;margin:10px 0}
+  footer li{margin:4px 0}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;background:rgba(8,12,9,.88);display:none;align-items:center;justify-content:center;z-index:100;padding:24px;cursor:zoom-out}
+  .lb.on{display:flex}
+  .lb img{max-width:min(1500px,96vw);max-height:92vh;border-radius:12px;box-shadow:0 30px 80px rgba(0,0,0,.6);background:#fff}
+  .lb .x{position:absolute;top:16px;right:20px;color:#fff;font-size:28px;font-weight:300;line-height:1}
+
+  .sec-alt{background:var(--bg-2)}
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  @media (max-width:860px){.two{grid-template-columns:1fr}}
+  .toc-side{font-size:13px;color:var(--muted)}
+  .mau-row{display:grid;gap:10px;margin-bottom:16px}
+  .mau-row div{background:var(--card-2);border:1px solid var(--border);border-radius:12px;padding:10px 12px}
+  .mau-row b{display:block;font-size:20px;font-weight:800;color:var(--brand-dark)}
+  .mau-row span{font-size:12.5px;color:var(--muted)}
+  .ap-details{border:1px solid var(--border);border-radius:12px;background:var(--card-2)}
+  .ap-details summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;padding:12px 16px;font-weight:700;font-size:15px;color:var(--brand-deep);user-select:none}
+  .ap-details summary::-webkit-details-marker{display:none}
+  .ap-details summary .cnt{background:var(--brand-soft);color:var(--brand-deep);border-radius:999px;padding:2px 9px;font-size:12.5px}
+  .ap-details summary .chev{margin-left:auto;font-size:22px;line-height:1;transition:transform .2s;color:var(--muted)}
+  .ap-details[open] summary .chev{transform:rotate(90deg)}
+  .ap-details[open] summary{border-bottom:1px solid var(--border)}
+  .ap-details .ap-groups{padding:14px}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand"><i>2</i> ИИ-помощник 2ГИС · 2027</div>
+    <div class="nav-links">
+      <a href="#status">Статус</a>
+      <a href="#principles">Принципы</a>
+      <a href="#scenarios">Сценарии</a>
+      <a href="#year">Логика года</a>
+      <a href="#q1">Q1 2027</a>
+      <a href="#product">Образ продукта</a>
+      <a href="#tracks">Треки</a>
+      <a href="#eco">Экосистема</a>
+      <a href="#ca">ЦА</a>
+      <a href="#challenges">Вызовы</a>
+      <a href="#result">Результат</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">2ГИС · Трек AI-агентов · Стратегия 2027</span>
+      <h1>Продукт с ИИ-помощниками <span class="arrow">→</span> Продукт&nbsp;— ИИ-помощник</h1>
+      <p class="lead">2027 — год превращения агентов из «чата рядом с продуктом» в основной способ взаимодействия с 2ГИС. В 2026 запущено ядро: Discovery-агент, собственные компоненты чата, первые механики монетизации. В 2027 поверх ядра собирается семейство агентов, слой памяти и транзакций и единая точка входа.</p>
+      <div class="nsm">North Star Metric <b>DAU AI-агентов &gt; 1 млн</b></div>
+      <div class="hero-stats">
+        <div class="hstat"><b>3,5 млн</b><span>MAU помощника сегодня<br><em>пик — 4,3 млн в июле</em></span></div>
+        <div class="hstat"><b>138 тыс.</b><span>DAU в среднем сегодня<br><em>пик — 199 тыс.</em></span></div>
+        <div class="hstat"><b>6</b><span>агентов: четыре в продукте, транспортный и Social — в 2027</span></div>
+      </div>
+    </div>
+    <div class="hero-img"><img src="assets/mockups/hero-icon.jpg" alt="Иконка 2ГИС из презентации «ИИ-помощник в 2ГИС», август 2026"></div>
+  </div>
+</header>
+
+<!-- STATUS -->
+<section id="status">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Где мы сейчас · октябрь 2026</span>
+      <h2>Шесть агентов, один помощник</h2>
+      <p class="lead">Четыре агента уже в продукте — Recovery, Booking, Товарный, Discovery. Ещё два — транспортный и Social Agent — в проработке на 2027. Каждый решает свою задачу, от вопроса о месте до записи и покупки, а для пользователя это один помощник.</p>
+    </div>
+
+    <div class="grid g4">
+      <div class="card">
+        <div class="agent-icon">R</div>
+        <h3>Recovery</h3>
+        <p class="muted" style="font-size:14px">Отвечает на вопросы о конкретном месте · запуск декабрь 2025</p>
+        <ul><li>Место, отзывы, услуги, цены, парковка, меню</li><li>Расширяет карточку: находит то, что сложно искать самому</li><li>Следующий шаг: позвонить, маршрут, сайт</li></ul>
+        <div class="quote">«Расскажи об этом месте»</div>
+        <b style="color:var(--brand-dark)">пик в июле: 4,3 млн MAU · 160 тыс. DAU</b>
+      </div>
+      <div class="card">
+        <div class="agent-icon">B</div>
+        <h3>Booking</h3>
+        <p class="muted" style="font-size:14px">Записывает на услуги прямо в чате · запуск июнь 2026</p>
+        <ul><li>Подбирает услугу, специалиста, время и стоимость</li><li>Рубрика «Красота» через оператора YCLIENTS</li><li>Если слотов нет — предложит ближайшие даты</li></ul>
+        <div class="quote">«Запиши меня на маникюр завтра вечером»</div>
+        <b style="color:var(--brand-dark)">55 тыс. MAU · 3 тыс. DAU</b>
+      </div>
+      <div class="card">
+        <div class="agent-icon">Т</div>
+        <h3>Товарный <span class="pill pill-q">MVP</span></h3>
+        <p class="muted" style="font-size:14px">Помогает выбрать не магазин, а товар · запуск июль 2026</p>
+        <ul><li>Уточняет категорию, бюджет и характеристики</li><li>Показывает предложения магазинов рядом</li><li>Ведёт к действию: сайт, маркетплейс или маршрут</li></ul>
+        <div class="quote">«Подбери недорогой робот-пылесос»</div>
+        <b class="muted">идёт анализ метрик</b>
+      </div>
+      <div class="card">
+        <div class="agent-icon">D</div>
+        <h3>Discovery <span class="pill pill-q">A/B web</span></h3>
+        <p class="muted" style="font-size:14px">Подсказывает, куда пойти в городе · запуск июль 2026</p>
+        <ul><li>Подбирает места по намерению, а не прямому запросу: движок поиска, данные Гида, контекст</li><li>Первое касание — вдохновение и поиск; дальше узнать, выбрать, забронировать</li></ul>
+        <div class="quote">«Куда сходить вечером?»</div>
+        <b class="muted">идёт анализ метрик</b>
+      </div>
+    </div>
+
+    <h3 style="margin:40px 0 6px">Пятый и шестой агенты: транспортный и Social</h3>
+    <p class="lead" style="font-size:16px;margin-bottom:16px">Направление «Сопровождение»: агенты внутри существующих сценариев 2ГИС — навигации, личных и групповых чатов, публичных событий. В Q1 2027 — продуктовая проработка и технические прототипы, запуск по роадмапу — Q2–Q4 2027.</p>
+    <div class="grid g2">
+      <div class="card">
+        <div class="agent-icon">Т</div>
+        <h3>Транспортный агент <span class="pill pill-t">Transform · Q2–Q4 2027</span></h3>
+        <p class="muted" style="font-size:14px">Связывает навигацию с поиском мест и другими действиями · закрывает задачу «добраться»</p>
+        <ul><li>Голосовой диалог с учётом местоположения, маршрута и дорожной ситуации, включая ответы через других агентов</li><li>Выбор способа добраться с учётом пробок, времени и цены; сложные и комбинированные маршруты</li><li>Голосовое сопровождение навигации: TTS, быстрое подключение новых голосов, в том числе знаменитостей</li><li>Целевая картина: от голосовых подсказок к диалогу и управлению навигатором голосом</li></ul>
+        <div class="quote">«Построй маршрут домой с заездом на заправку»</div>
+        <b class="muted">Q1 2027 — проработка и исследование, без управления экраном и перестроения маршрута</b>
+      </div>
+      <div class="card">
+        <div class="agent-icon">S</div>
+        <h3>Social Agent <span class="pill pill-t">Transform · Q1–Q3 2027</span></h3>
+        <p class="muted" style="font-size:14px">Помогает договариваться в личных и групповых чатах, разбираться в происходящем в публичных</p>
+        <ul><li>Фасилитатор в личных и групповых чатах: подключение к чату, учёт пожеланий участников, помощь с выбором</li><li>Передаёт согласованную задачу другим агентам — подбор в Discovery, запись в Booking; ненавязчивая проактивность</li><li>В публичных чатах «Пульса»: саммари события и ответы на вопросы о нём с учётом актуальности и достоверности</li><li>Целевая картина: обсуждение превращается в согласованное решение и действие — общая бронь, план на компанию</li></ul>
+        <div class="quote">«@ИИ-помощник, найди 3 крутых кафе и создай опросник куда пойти»</div>
+        <b class="muted">Q1 2027 — проработка и исследование совместно с «Пульсом»</b>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section id="principles" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Принципы работы агентов</span>
+      <h2>Девять принципов, по которым строим помощника</h2>
+      <p class="lead">Рамка — концепт «Городской ИИ-помощник 2ГИС». Ассистент понимает потребность и контекст пользователя в городе, объединяет поиск, маршруты, рекомендации и действия в один сценарий и сопровождает от формирования потребности до выполнения задачи.</p>
+    </div>
+    <div class="grid g3 principles">
+      <div class="card principle"><h4>Агент решает задачу, а не «общается»</h4><p>Каждая точка входа и каждый ответ привязаны к конкретной задаче и следующему шагу: понять → выбрать → сделать.</p></div>
+      <div class="card principle"><h4>Единая точка входа: намерение вместо каталожного запроса</h4><p>Одно поле для текста и голоса принимает любую задачу — помощник сам определяет сценарий: поиск, маршрут, бронирование или рекомендации.</p></div>
+      <div class="card principle"><h4>Режим «второго пилота», а не отдельный продукт</h4><p>Пользователь не «переходит в AI» — агент работает там, где уже есть намерение: поверх карты, поиска, маршрута, карточки. Бесшовные переходы без потери контекста.</p></div>
+      <div class="card principle"><h4>Агенты специализированы, но бесшовны</h4><p>Каждый закрывает свой этап lifecycle: потребность → поиск и выбор → бронь и оплата → маршрут → сопровождение → лояльность. Для пользователя это один помощник; склейку делает оркестратор.</p></div>
+      <div class="card principle"><h4>Формат ответа подбирается под запрос</h4><p>Локальное дискавери — картой, широкое — списком с картой, справка — текстом, сложный маршрут — транспортной выдачей, «поехали домой» — сразу в навигаторе. Чат объясняет выдачу: просят «с хорошими отзывами» — показываем отзывы и аргументируем выбор.</p></div>
+      <div class="card principle"><h4>Данные важнее «умности модели»</h4><p>Точность данных — основа бренда 2ГИС; AI — интерфейс к знаниям о городе, а не их замена. Проверенные данные отличают ответ 2ГИС от универсальной LLM. Ошибка в гео-контексте разрушает доверие быстрее, чем любая фича его создаёт.</p></div>
+      <div class="card principle"><h4>Сначала контекстная персонализация, потом профильная</h4><p>Сперва локация, время, сценарий и маршрут; затем предпочтения, история и социальный круг — там, где это даёт пользу и приемлемо по приватности. Проактивность уместная, не навязчивая.</p></div>
+      <div class="card principle"><h4>Вопросы и обратная связь — стратегический актив</h4><p>Органические вопросы, реакции и действия после ответа улучшают качество ответов, саджесты, ранжирование и сами данные карточек.</p></div>
+      <div class="card principle"><h4>Единая платформа</h4><p>Механики, события и UX-паттерны переиспользуются между агентами: общие контракты, общий подход к метрикам, масштабирование на новые сценарии и поверхности.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section id="scenarios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Фокусные сценарии</span>
+      <h2>Какие задачи горожанина 2ГИС решает через AI</h2>
+      <p class="lead">Одиннадцать сценариев по этапам жизненного цикла задачи в городе — плюс проактивность и сторона бизнеса. У каждого справа — как он закрыт сегодня: решается без агентов существующим продуктом, частично работает через запущенных агентов или никак не решается. Сверху — сквозной способ входа, который объединяет всё.</p>
+    </div>
+    <div class="lifecycle">
+      <span>Найти</span><i>→</i><span>Узнать</span><i>→</i><span>Выбрать</span><i>→</i><span>Сделать</span><i>→</i><span>Добраться</span><i>→</i><span>Спланировать</span><i>→</i><span>Договориться</span><i>→</i><span>Разобраться</span><i>→</i><span>Каждый день</span><i>→</i><span>Предложить</span>
+      <span class="cross">Сквозное: одна строка для любого запроса, текстом или голосом</span><span class="cross">Обратная сторона: компания видит спрос из агента и управляет им</span>
+    </div>
+    <div class="legend" style="margin:0 0 14px"><span><i style="background:var(--run)"></i>Решается без агентов — задачу закрывает текущий продукт, AI добавляет диалог</span><span><i style="background:var(--warn)"></i>Частично работает — агент запущен, но покрытие или качество ограничены</span><span><i style="background:var(--risk)"></i>Никак не решается — сценария в продукте нет</span></div>
+    <div class="scen">
+      <div class="sc">
+        <div class="top"><span class="step">01 · Найти</span><span class="pill pill-warn">Частично работает</span></div>
+        <h3>Найти место под задачу, а не под рубрику</h3>
+        <div class="ask">«Куда сходить вечером с детьми?» · «Где недорого и вкусно поесть рядом?»</div>
+        <p class="why"><b>Почему через AI.</b> Задача формулируется словами и контекстом, а не фильтрами. Агент понимает намерение и отвечает подбором с аргументами, а не списком рубрик.</p>
+      </div>
+      <div class="sc">
+        <div class="top"><span class="step">02 · Узнать</span><span class="pill pill-warn">Частично работает</span></div>
+        <h3>Узнать о месте то, чего нет в карточке</h3>
+        <div class="ask">«Есть ли парковка и можно ли с собакой?» · «Какие очереди на этой заправке?»</div>
+        <p class="why"><b>Почему через AI.</b> Карточка статична, а вопросы конкретные и редкие. Агент собирает ответ из отзывов, сайта, фото и внутренних данных и предлагает следующий шаг. Цель — ответ виден прямо в карточке, без перехода в чат.</p>
+      </div>
+      <div class="sc">
+        <div class="top"><span class="step">03 · Выбрать</span><span class="pill pill-warn">Частично работает</span></div>
+        <h3>Выбрать товар, а не магазин</h3>
+        <div class="ask">«Подбери недорогой робот-пылесос» · «Где купить детское автокресло сегодня рядом?»</div>
+        <p class="why"><b>Почему через AI.</b> Каталог ведёт в магазин, а человеку нужен товар: категория, бюджет, характеристики. Агент уточняет запрос, показывает предложения магазинов рядом и ведёт к действию — сайт, маркетплейс или маршрут в магазин.</p>
+      </div>
+      <div class="sc">
+        <div class="top"><span class="step">04 · Сделать</span><span class="pill pill-warn">Частично работает</span></div>
+        <h3>Записаться, забронировать и оплатить, не выходя из 2ГИС</h3>
+        <div class="ask">«Запиши меня на маникюр завтра вечером» · «Столик на троих в субботу» · «Отель на выходные»</div>
+        <p class="why"><b>Почему через AI.</b> У большинства бизнесов нет онлайн-записи: в красоте API есть у 30% салонов, телефон у 94%. Агент сам выбирает способ — API, сайт или звонок — и доводит до подтверждённой записи и оплаты в чате.</p>
+      </div>
+      <div class="sc">
+        <div class="top"><span class="step">05 · Добраться</span><span class="pill pill-r">Решается без агентов</span></div>
+        <h3>Добраться удобным способом и получить помощь в дороге</h3>
+        <div class="ask">«На чём быстрее до вокзала?» · «Домой с заездом на заправку и в Пятёрочку» · за рулём, голосом</div>
+        <p class="why"><b>Почему через AI.</b> Выбор способа с учётом пробок и цены, маршруты с остановками и смена плана на ходу — это диалог, а не форма. За рулём текст недоступен, поэтому голос здесь условие сценария.</p>
+      </div>
+      <div class="sc">
+        <div class="top"><span class="step">06 · Спланировать</span><span class="pill pill-risk">Никак не решается</span></div>
+        <h3>Спланировать день, выходные или поездку в один ответ</h3>
+        <div class="ask">«Составь план на субботу с ребёнком» · «День в Казани» · «Поездка на выходные в Питер»</div>
+        <p class="why"><b>Почему через AI.</b> План — это несколько мест, время, маршрут и бюджет. Сегодня это склейка из пяти приложений. Агент собирает план целиком, подкручивает по пожеланиям и сохраняет, чтобы к нему вернуться.</p>
+      </div>
+      <div class="sc">
+        <div class="top"><span class="step">07 · Договориться</span><span class="pill pill-risk">Никак не решается</span></div>
+        <h3>Забронировать место на компанию и поделиться бронью</h3>
+        <div class="ask">«Забронируй столик в Шоколаднице на троих и добавь бронь супруге и сыну» · «Собери голоса, куда идём в субботу»</div>
+        <p class="why"><b>Боль.</b> Компания договаривается в чате, а бронирует кто-то один: остальные не видят время и адрес, переспрашивают, пересылают скриншоты; при смене планов нужно предупреждать каждого.<br><b>Почему через AI.</b> Агент собирает голоса в чате, бронирует на всех и делится бронью с каждым: у всех своя копия с адресом, временем и маршрутом, изменения синхронизируются.</p>
+      </div>
+      <div class="sc">
+        <div class="top"><span class="step">08 · Разобраться</span><span class="pill pill-risk">Никак не решается</span></div>
+        <h3>Разобраться с городскими задачами «как сделать»</h3>
+        <div class="ask">«Как записаться в поликлинику по полису?» · «Какие документы нужны в МФЦ для замены паспорта?»</div>
+        <p class="why"><b>Почему через AI.</b> Справочный вопрос требует не списка организаций, а пошагового ответа с привязкой к месту: куда идти, что взять, как записаться.</p>
+      </div>
+      <div class="sc">
+        <div class="top"><span class="step">09 · Каждый день</span><span class="pill pill-risk">Никак не решается</span></div>
+        <h3>Ежедневный помощник в городе</h3>
+        <div class="ask">«Что у меня сегодня?» · «Напомни про запись и построй маршрут» · «Куда сходить, где мы с друзьями ещё не были?»</div>
+        <p class="why"><b>Почему через AI.</b> Сегодня 2ГИС открывают под задачу и закрывают. Помощник, у которого хранятся планы, записи, брони и билеты, который помнит историю и знает круг, становится поводом открывать приложение каждый день — без нового поиска.</p>
+      </div>
+      <div class="sc">
+        <div class="top"><span class="step">10 · Предложить</span><span class="pill pill-risk">Никак не решается</span></div>
+        <h3>Помощник предлагает сам, уместно и ненавязчиво</h3>
+        <div class="ask">«Заедем в кофейню по дороге на работу?» · «Впереди пробка — предлагаю объехать» · «Завтра запись к мастеру в 19:00»</div>
+        <p class="why"><b>Почему через AI.</b> Сегодня каждый сценарий начинается с запроса. Агент знает контекст — маршрут, время, историю записей и планы — и может предложить следующий шаг до того, как человек его сформулировал. Граница между полезным и навязчивым задаётся данными и обратной связью.</p>
+      </div>
+      <div class="sc" style="grid-column:1 / -1">
+        <div class="top"><span class="step">11 · Для бизнеса</span><span class="pill pill-risk">Никак не решается</span></div>
+        <h3>Компания получает клиентов из агента и управляет этим</h3>
+        <div class="ask">«Сколько записей пришло из 2ГИС за месяц?» · «О чём спрашивают про мою компанию?» · «Подключить онлайн-запись без своего сайта»</div>
+        <p class="why"><b>Почему через AI.</b> Треть платной базы общается с агентом, но бизнес этого не видит: в ЛК есть клики и звонки, а вопросов и записей из чата нет. Агент становится каналом живого спроса: компания видит обращения и записи, подключает онлайн-запись без своей витрины и управляет слотами. Без этого нет аргумента для рекламодателя и данных для монетизации.</p>
+      </div>
+    </div>
+    <p class="footnote">Набор и приоритеты сценариев — синтез из стратегии, плана Q1 и презентации; сверить с командой.</p>
+  </div>
+</section>
+
+<!-- YEAR LOGIC -->
+<section id="year">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Ожидания от трека и метрики 2027</span>
+      <h2>Логика года — три такта</h2>
+      <p class="lead">Все инициативы трека работают на одну цель — DAU AI-агентов больше 1 млн. Рост даёт не только запуск новых агентов, но и глубина: транзакции и способ взаимодействия.</p>
+    </div>
+    <div class="takty">
+      <div class="takt"><span class="k"><i>1</i> Начало года</span><h3>Доезжаем на платформы</h3><p>Discovery выходит на iOS/Android на собственных компонентах чата; стартуют copilot-сценарии, слой памяти и совместные сценарии.</p></div>
+      <div class="takt"><span class="k"><i>2</i> Середина года</span><h3>Расширяем семейство</h3><p>Транспортный агент, агент сопровождения, оплата в чате, единая точка входа — оркестратор поверх агентов.</p></div>
+      <div class="takt"><span class="k"><i>3</i> Конец года</span><h3>Замыкаем циклы</h3><p>Брони и билеты через партнёров, хранение внешних броней, персонализация, голосовой режим, выход агента в чаты пользователей.</p></div>
+    </div>
+    <div class="metrics">
+      <div class="callout">
+        <h3>Ключевая ставка года</h3>
+        <p>Новые агенты расширяют охват сценариев. Транзакции (запись, бронь, оплата) и способ взаимодействия (copilot, собственный чат, голос) конвертируют охват в привычку и возвращаемость.</p>
+      </div>
+      <div class="card">
+        <h3>Как измеряем</h3>
+        <ul>
+          <li><b>NSM:</b> DAU AI-агентов &gt; 1 млн</li>
+          <li><b>Resolution Rate</b> и прогрессивные целевые действия: маршрут / звонок / сайт</li>
+          <li><b>Доля запросов</b> через агентов от общего поиска</li>
+          <li><b>Инкрементальность</b> через holdout и A/B</li>
+          <li><b>Монетизация:</b> рост выручки от рекламы и целевых действий в агентах</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Q1 PLAN -->
+<section id="q1" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Первый такт · план Q1 2027 по агентам</span>
+      <h2>Шесть агентов: что каждый растит в первом квартале</h2>
+      <p class="lead">NSM направления — DAU AI-агентов больше 1 млн. В Recovery и Discovery растим MAU: на него влияем напрямую, из него складывается DAU. В Booking — записи в день и конверсию: через повторные записи они дают возвраты в 2ГИС. Два новых агента — транспортный и Social Agent — в Q1 прорабатываем и прототипируем без пользовательских запусков.</p>
+    </div>
+    <div class="nsm-note" style="grid-template-columns:repeat(5,1fr)">
+      <div><b>Recovery · MAU</b>рычаг — конверсия из карточки в агента</div>
+      <div><b>Discovery · MAU + решённая задача</b>рычаги — раскатка, входы, конверсия, возвращаемость</div>
+      <div><b>Booking · записи в день и конверсия</b>порядок — покрытие → входы → ценность для бизнеса</div>
+      <div><b>Транспортный агент · новый</b>Q1 — проработка и прототип; целевая картина — MAU, успешность сценариев, качество</div>
+      <div><b>Social Agent · новый</b>Q1 — проработка и прототип; целевая картина — MAU, успешность сценариев, качество</div>
+    </div>
+
+    <!-- Recovery -->
+    <div class="ap">
+      <div class="ap-head"><div class="agent-icon">R</div><h3>Recovery</h3><span class="pill pill-q">самый массовый агент · цель 5 млн MAU</span><span class="grow-what">Растим: MAU через конверсию из карточки</span></div>
+      <div class="ap-cols">
+        <div><b>Что за продукт</b>Продолжение карточки: отвечает о месте там, где карточка сама не отвечает. Живёт внутри карточки, аудитория растёт не от привычки, а когда агент попадает в массовый спрос.</div>
+        <div><b>Зачем направлению</b>Ключевая ценность — знание о месте, актив для остальных агентов. Recovery и доводит знание до пользователя, и помогает собрать его: вопросы показывают, чего не хватает в карточке.</div>
+        <div><b>Куда идём</b>К концу 2027 польза не требует перехода в чат: пользователь открывает карточку и сразу видит ответ на то, что обычно спрашивают, и может доспросить. Единица ценности — ответ, а не диалог.</div>
+        <div><b>Что растим</b>Поверхности почти исчерпаны (блок в «Обзоре», таб «Вопросы», кнопка в ActionBar, с Q4 отзывы) — дальше растим долю входящих. Сейчас агент в 0,24% сессий на iOS и 0,5% на Android; рост проникновения делает холдаут измеримым.</div>
+      </div>
+      <p class="muted" style="font-size:14px">Массовость — следствие, а не ценность: через Recovery идёт верх воронки и чужие интенты (товарных 1,5–3% сообщений, услуговых 4,1%). Верх воронки со временем уйдёт к единой точке входа, знание о месте останется за Recovery.</p>
+      <details class="ap-details"><summary>Задачи и брифы Q1 <span class="cnt">10</span><span class="chev">›</span></summary>
+      <div class="ap-groups">
+        <div class="apg"><h4>Аудитория через конверсию</h4><p>Вход в отзывах — ответ прямо в блоке без ухода в чат: агентское саммари заменяет офлайн-пайплайн «Люди говорят». Дальше тот же приём на описании места.</p>
+          <div class="init"><span class="n">Ответ агента в блоке отзывов вместо «Люди говорят»</span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">Агентское саммари в описании места в «Обзоре»</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg"><h4>Источники данных</h4><p>Сегодня веб-поиск даёт 60 тыс. запросов в сутки и в 6 случаях из 10 не находит ответа.</p>
+          <div class="init"><span class="n">Собственный краулер и база сайтов по местам вместо GigaSearch</span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">Внутренние источники 2ГИС в ответах агента</span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">Афиша в агентах: информация о событиях<small>общая инициатива AI-агентов</small></span><span class="pill pill-ok">Бриф Q4, продолжаем</span></div>
+        </div>
+        <div class="apg"><h4>Качество ответов</h4><p>Цикл на крупнейших наборах рубрик и интентов. Приоритет по дизлайкам — ответы «данных нет», отказы, гео-объекты.</p>
+          <div class="init"><span class="n">Работа с качеством в установленном режиме</span><span class="pill pill-r">Работа с качеством</span></div>
+        </div>
+        <div class="apg"><h4>Фин.эффект</h4><p>Усиливаем и делаем видимым для рекламодателя. Внутренний эффект: агентское саммари снимает стоимость офлайн-генерации — около 6,2 млн ₽ на пул плюс перегенерации.</p>
+          <div class="init"><span class="n">События агентов в ЛК рекламодателя</span><span class="pill pill-ok">Бриф Q4, продолжаем</span></div>
+          <div class="init"><span class="n">Возможности рекламодателя в работе с агентом</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg"><h4>SDK и платформа</h4><p>Миграция с дизайн-системы V1 обязательна — поддержку прекратили. Осваиваем то, что даёт Сбер, и держим позицию по контуру ЦА.</p>
+          <div class="init"><span class="n">Миграция с дизайн-системы V1</span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">Sber SDK: External Method со стримингом и виджет на всю шторку</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+      </div>
+      </details>
+    </div>
+
+    <!-- Discovery -->
+    <div class="ap">
+      <div class="ap-head"><div class="agent-icon">D</div><h3>Discovery</h3><span class="pill pill-q">первый задачный агент</span><span class="grow-what">Растим: MAU + метрика решённой задачи</span></div>
+      <div class="ap-cols">
+        <div><b>Что за продукт</b>Поиск диалогом: подбирает места под задачу там, где каталожный поиск требует перебора формулировок и фильтров. «Куда сходить вечером с детьми» → подбор с аргументами, а не список рубрик.</div>
+        <div><b>Зачем направлению</b>Ключевая ценность — подбор мест. Бронирование, планы, транспорт, товары начинаются с выбора места. С Discovery начинается путь «найти → сделать → добраться», и единая точка входа собирается вокруг него.</div>
+        <div><b>Куда идём</b>К концу 2027 диалог доводит до решения, а не до списка: подбор с аргументами, подкрутка под себя, результат остаётся с пользователем — планом, записью, бронью.</div>
+        <div><b>Что растим</b>В 2027 аудитория растёт в основном от раскатки и новых входов. Механический рост не покажет, работает ли агент — рядом с MAU нужна метрика решённой задачи: доведён ли пользователь до выбора за сессию.</div>
+      </div>
+      <p class="muted" style="font-size:14px">Рычаги по порядку: раскатка (100% в Онлайне и релиз на платформах) → входы (у Discovery нет карточки-контейнера: дашборд, нулевая выдача, дальше единая точка входа) → конверсия входа в диалог → возвращаемость («куда сходить» повторяется регулярно, есть шанс на привычку).</p>
+      <details class="ap-details"><summary>Задачи и брифы Q1 <span class="cnt">9</span><span class="chev">›</span></summary>
+      <div class="ap-groups">
+        <div class="apg"><h4>Доступность и входы</h4><p>Без этого остальное не считается — главный вклад в аудиторию года.</p>
+          <div class="init"><span class="n">Раскатка 100% в Онлайне и релиз на iOS/Android</span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">Входы на платформах: дашборд и нулевая выдача</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg"><h4>Чат на своих компонентах</h4><p>Условие релиза на платформах и свой трек: виджеты, кнопки действий, места на карте, возврат в диалог без потери контекста.</p>
+          <div class="init"><span class="n">Чат агента, который снимает UI-ограничения<small>общая инициатива AI-агентов</small></span><span class="pill pill-ok">Бриф Q4, продолжаем</span></div>
+          <div class="init"><span class="n">История чатов</span><span class="pill pill-ok">Бриф Q4, продолжаем</span></div>
+        </div>
+        <div class="apg"><h4>Модель ответа</h4><p>Витрина мест, рычаги настройки подборки или карта тем. Решение опирается на октябрьское исследование и задаёт метрику успешной сессии.</p>
+          <div class="init"><span class="n">Модель ответа и метрика успешной сессии</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg"><h4>Данные о местах</h4><p>Внутренняя база знаний: для чего место подходит, чем отличается, кому. Собирается из отзывов, фото, меню и витрин, а не веб-поиском в момент запроса. Гид — источник подборок, Афиша — событий, Recovery — факты о месте.</p>
+          <div class="init"><span class="n">Внутренняя база знаний о местах</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg"><h4>Контекст и персонализация</h4><p>Где человек, когда спрашивает, какая погода, что уже смотрел в сессии. Сначала контекст, профиль позже.</p>
+          <div class="init"><span class="n">Контекст запроса и базовая персонализация</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg"><h4>Качество и фин.эффект</h4><p>Цикл на живом трафике. Реклама в выдаче как новая позиция и замер каннибализации: диалог вместо поисковой выдачи — потерянный рекламный показ, считаем нетто, holdout уже стоит.</p>
+          <div class="init"><span class="n">Работа с качеством в установленном режиме</span><span class="pill pill-r">Работа с качеством</span></div>
+          <div class="init"><span class="n">Реклама в выдаче и замер каннибализации</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+      </div>
+      </details>
+    </div>
+
+    <!-- Booking -->
+    <div class="ap">
+      <div class="ap-head"><div class="agent-icon">B</div><h3>Booking</h3><span class="pill pill-q">сейчас только YCLIENTS · 30% салонов в красоте</span><span class="grow-what">Растим: покрытие, записи в день, конверсию</span></div>
+      <div class="ap-cols">
+        <div><b>Что за продукт</b>Агент записи: доводит от выбора услуги до записи прямо в 2ГИС. Сегодня записывает только туда, где есть API YCLIENTS.</div>
+        <div><b>Зачем направлению</b>Бронирование — частотная задача: стрижка раз в 1–2 месяца, ресторан 1–2 раза в месяц. История записей и пуши дают повод вернуться без нового поиска. Конверсия при повторной записи в 3 раза выше: 30% против 8–10% у новичка.</div>
+        <div><b>Куда идём</b>В Q1 агент учится записывать не только через YCLIENTS. К концу квартала три инструмента — API поставщиков, запись через сайт, звонок; сам выбирает самый дешёвый из доступных, пользователь видит статус. Первая ступень лестницы покрытия и фундамент для кабинета компании.</div>
+        <div><b>Что растим</b>Порядок приоритетов: покрытие → входы и конверсия → ценность для бизнеса. Покрытие считаем по факту раскатки, а не по готовности инструмента.</div>
+      </div>
+      <div class="card flat table-wrap" style="padding:12px 16px 6px">
+        <table class="kpi-table">
+          <thead><tr><th>Метрика</th><th>Сейчас</th><th>Цель Q1 2027</th><th>Цель 2027</th></tr></thead>
+          <tbody>
+            <tr><td>Покрытие агентом компаний в красоте</td><td>30%</td><td>42–45% <span class="flag">уточнить</span></td><td>70%</td></tr>
+            <tr><td>Конверсия внутри агента в успешную запись</td><td>10%</td><td>12% <span class="muted">только API</span></td><td>15%</td></tr>
+            <tr><td>CTR точек входа у не-рекламодателей</td><td>5%</td><td>7% <span class="muted">пока без деления РД / неРД</span></td><td>10%</td></tr>
+            <tr><td>Записей в день</td><td>500 <span class="muted">сейчас 150, цель декабря</span></td><td>650+</td><td>1 250+</td></tr>
+            <tr><td>Компании видят записи из 2ГИС в ЛК</td><td>нет</td><td>да</td><td>инструменты управления в ЛК, переток неРД → РД</td></tr>
+          </tbody>
+        </table>
+        <p class="footnote">Названия колонок «Сейчас / Цель Q1 / Цель 2027» — моя интерпретация трёх столбцов из исходной таблицы, сверить.</p>
+      </div>
+      <details class="ap-details"><summary>Задачи и брифы Q1 <span class="cnt">10</span><span class="chev">›</span></summary>
+      <div class="ap-groups">
+        <div class="apg"><h4>Покрытие: агент записывает любым способом</h4><p>В красоте онлайн-запись есть у 42% компаний, сайт — у 59%, телефон — у 94%. Агент становится оркестратором инструментов API → сайт → звонок: выбирает способ по доступности и цене, ведёт единый статус «ждём подтверждения / подтверждено» и очередь асинхронных заявок. Метрики: доля карточек с рабочим способом записи; по каждому инструменту — доля сессий и конверсия; прирост покрытия в п.п.</p>
+          <div class="init"><span class="n">Оркестратор инструментов записи</span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">Звонок как инструмент агента<small>на базе пилота Q4</small></span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">Браузерная запись как инструмент агента<small>на базе тех. рисеча Q4</small></span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">API DIKIDI / Sonline</span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">Раскатка агента на карточки с доступным способом записи</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg"><h4>Входы и конверсия внутри агента</h4><p>CTR 5% → 7%: показываем агента на YC-компаниях, где запись есть, а агента нет (22 тыс. → 28 тыс., около +30%), и пускаем без авторизации — для API-интеграций контакты подтверждаются по SMS. Конверсия 10% → 12%: раздел «Бронирования» со статусом, отменой и повторной записью, пуш за 2 часа до визита.</p>
+          <div class="init"><span class="n">Точки входа на YC-компаниях без агента</span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">Агент для неавторизованного пользователя</span><span class="pill pill-warn">Нужен бриф</span></div>
+          <div class="init"><span class="n">История записей<small>забрать часть P1</small></span><span class="pill pill-warn">Переписать бриф</span></div>
+          <div class="init"><span class="n">Напоминание о записи</span><span class="pill pill-ok">Бриф Q4, продолжаем</span></div>
+        </div>
+        <div class="apg" style="grid-column:1 / -1"><h4>Ценность агента для компаний</h4><p>Рекламодатель видит в ЛК клики и звонки, но не записи из 2ГИС. Первый шаг к модели монетизации — счётчик бронирований, конверсия в бронь из агента, список и детали броней в ЛК партнёра. Метрика: число компаний с ≥ 5 записями из 2ГИС в месяц, далее их конверсия в рекламодателей.</p>
+          <div class="init"><span class="n">Данные о записи в ЛК партнёра<small>зависимость: команда ЛК</small></span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+      </div>
+      </details>
+    </div>
+
+    <!-- Транспортный агент -->
+    <div class="ap">
+      <div class="ap-head"><div class="agent-icon">Т</div><h3>Транспортный агент</h3><span class="pill pill-q">направление «Сопровождение» · новый агент</span><span class="grow-what">Q1: проработка и исследование, без пользовательского запуска</span></div>
+      <div class="ap-cols">
+        <div><b>Что за продукт</b>AI-агент внутри навигации: голосовой диалог с учётом местоположения, маршрута и дорожной ситуации. Связывает навигацию с поиском мест и другими действиями, в том числе через других агентов.</div>
+        <div><b>Зачем направлению</b>Доступ к возможностям AI там, где возникает задача — в дороге, без перехода в отдельный агентский интерфейс. Discovery даёт подбор мест, Booking — запись, транспортный агент связывает их с контекстом поездки.</div>
+        <div><b>Куда идём</b>К концу 2027 в навигаторе пользователь переходит от голосовых подсказок к диалогу и управлению сервисом голосом. По роадмапу — выбор способа добраться, сложные маршруты и проактивные подсказки (Q2–Q4 2027).</div>
+        <div><b>Что растим</b>В целевой картине — MAU, успешность сценариев и качество ответов. В Q1 — продуктовые сценарии, техническая реализуемость и архитектура; пока без управления экраном и перестроения маршрута.</div>
+      </div>
+      <details class="ap-details"><summary>Задачи и брифы Q1 <span class="cnt">3</span><span class="chev">›</span></summary>
+      <div class="ap-groups">
+        <div class="apg"><h4>Голосовое сопровождение навигации</h4><p>TTS для навигационных подсказок: качество и задержки синтеза, быстрое подключение новых голосов (в том числе знаменитостей), архитектура озвучивания.</p>
+          <div class="init"><span class="n">Голосовое сопровождение навигации: продуктовая проработка и исследование TTS</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg"><h4>Диалоговый транспортный агент</h4><p>Голосовой диалог с учётом местоположения, маршрута и дорожной ситуации, включая ответы через других агентов.</p>
+          <div class="init"><span class="n">Диалоговый транспортный агент: продуктовая проработка и техническое исследование</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg" style="grid-column:1 / -1"><h4>Оркестрация AI-агентов</h4><p>Передача намерения, контекста и задачи из агента в Discovery, Booking и другие агенты с возвратом результата; полный цикл на базовом техническом прототипе.</p>
+          <div class="init"><span class="n">Оркестрация AI-агентов: техническое исследование и прототип межагентного взаимодействия<small>общая инициатива с Social Agent</small></span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+      </div>
+      </details>
+    </div>
+
+    <!-- Social Agent -->
+    <div class="ap">
+      <div class="ap-head"><div class="agent-icon">S</div><h3>Social Agent</h3><span class="pill pill-q">направление «Сопровождение» · новый агент</span><span class="grow-what">Q1: проработка и исследование, без пользовательского запуска</span></div>
+      <div class="ap-cols">
+        <div><b>Что за продукт</b>AI-агент внутри личных и групповых чатов и публичных событий. В личных чатах — фасилитатор: помогает договориться, куда и когда идём. В публичных — помогает разобраться в происходящем.</div>
+        <div><b>Зачем направлению</b>Обсуждение в чате — место, где рождается задача «куда пойдём». Агент превращает его в выбор и действие, передавая согласованную задачу Discovery (подбор) и Booking (запись), без перехода в отдельный интерфейс.</div>
+        <div><b>Куда идём</b>К концу 2027 в личных чатах обсуждение превращается в согласованное решение и действие — общая бронь, план на компанию; в публичных чатах агент саммаризует событие и отвечает на вопросы о нём.</div>
+        <div><b>Что растим</b>В целевой картине — MAU, успешность сценариев и качество ответов. В Q1 — продуктовые сценарии, техническая реализуемость, архитектура; публичные чаты — совместно с «Пульсом».</div>
+      </div>
+      <details class="ap-details"><summary>Задачи и брифы Q1 <span class="cnt">3</span><span class="chev">›</span></summary>
+      <div class="ap-groups">
+        <div class="apg"><h4>Личные и групповые чаты</h4><p>Агент-фасилитатор: подключение к чату, учёт пожеланий участников, помощь с выбором, передача согласованной задачи другим агентам; отдельно — ненавязчивая проактивность.</p>
+          <div class="init"><span class="n">Social Agent в личных и групповых чатах: продуктовая проработка и техническое исследование</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg"><h4>Публичные чаты</h4><p>Совместно с «Пульсом»: контекстные саммари событий и ответы на вопросы в чате с учётом типа события, актуальности и достоверности информации.</p>
+          <div class="init"><span class="n">Social Agent в публичных чатах: продуктовая проработка и техническое исследование</span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+        <div class="apg" style="grid-column:1 / -1"><h4>Оркестрация AI-агентов</h4><p>Передача согласованной в чате задачи в Discovery, Booking и другие агенты с возвратом результата в диалог.</p>
+          <div class="init"><span class="n">Оркестрация AI-агентов: техническое исследование и прототип межагентного взаимодействия<small>общая инициатива с транспортным агентом</small></span><span class="pill pill-warn">Нужен бриф</span></div>
+        </div>
+      </div>
+      </details>
+    </div>
+    <p class="footnote">Сроки инициатив в исходном плане не проставлены (ДД.ММ). Статусы: «Нужен бриф» — бриф ещё не написан, «Бриф Q4, продолжаем» — инициатива идёт с Q4 2026.</p>
+  </div>
+</section>
+
+<!-- PRODUCT VISION -->
+<section id="product">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Образ продукта · видение 2027+</span>
+      <h2>Помощник живёт в контексте экрана, а не только чата</h2>
+      <p class="lead">Концепт-кадры из презентации «ИИ-помощник в 2ГИС» (август 2026). Кликните, чтобы увеличить.</p>
+    </div>
+
+    <div class="feature">
+      <div>
+        <span class="pill pill-q">Q2–Q4 2027</span>
+        <h3>Одна точка входа — и ответ под запрос</h3>
+        <p class="muted">Пользователь вводит намерение, а не каталожный запрос.</p>
+        <ul>
+          <li>Вход текстом или голосом: «где поесть», «проверь айфон», «события сегодня», «купи билет в кино»</li>
+          <li>Помощник понимает контекст и сам выбирает сценарий — поиск, маршрут, бронирование или рекомендации</li>
+          <li>Формат ответа под запрос: справка — текстом, места — на карте, «поехали домой» — в навигаторе</li>
+          <li>Одна точка входа для любого интента</li>
+        </ul>
+        <div class="ex"><b>Пример</b>«Куда сходить вечером?» → карта с подборкой · «Как доехать домой?» → маршрут</div>
+      </div>
+      <div class="f-img"><img src="assets/mockups/entry-phones.jpg" alt="Единая точка входа: сложный запрос понятным языком и роутинг по запросу" data-full="assets/slides/slide-11.jpg"><p class="cap">Сложный запрос понятным языком · роутинг исходя из запроса</p></div>
+    </div>
+
+    <div class="strip">
+      <span class="pill pill-q">Q1–Q3 2027 · Copilot-режим</span>
+      <img src="assets/mockups/copilot-strip.jpg" alt="Пять форматов ответа: карта, навигатор, список на карте, карточка, транспортная выдача" data-full="assets/slides/slide-12.jpg" style="margin-top:12px">
+      <div class="strip-caps">
+        <div><b>Ответ — картой</b><br>«Забронируй одно из предложенных мест»</div>
+        <div><b>Ответ — в навигаторе</b><br>«Найди маршрут быстрее»</div>
+        <div><b>Ответ — списком на карте</b><br>«Оставь только итальянскую кухню»</div>
+        <div><b>Ответ — в карточке</b><br>«Расскажи про Чёрную берёзу: обслуживание и отзывы»</div>
+        <div><b>Ответ — транспортной выдачей</b><br>«Маршрут домой с заездом на Лукойл и в Пятёрочку»</div>
+      </div>
+    </div>
+
+    <div class="feature rev">
+      <div>
+        <span class="pill pill-q">Q1–Q3 2027</span>
+        <h3>Совместные планы с близкими</h3>
+        <p class="muted">Один диалог — планы на всех. Агент в переписках пользователей, включая групповые чаты.</p>
+        <ul>
+          <li>Общий выбор места и времени: «куда сходить компанией в субботу?»</li>
+          <li>Опросник на компанию: «собери голоса, куда пойдём»</li>
+          <li>Бронь на компанию и шаринг: «добавь бронь супруге и сыну»</li>
+          <li>Объясняет выбор: «почему предлагаю именно эти места»</li>
+          <li>Работает в публичных чатах Пульса под события: «что за событие», «сделай саммари по диалогу»</li>
+        </ul>
+        <div class="ex"><b>Пример</b>«Забронируй столик в Шоколаднице на троих и добавь бронь супруге и сыну»</div>
+      </div>
+      <div class="f-img"><img src="assets/mockups/group-phones.jpg" alt="Опросник в чате и готовый план на выходные для группы" data-full="assets/slides/slide-13.jpg"><p class="cap">Опросник в чате · готовый план на выходные для группы</p></div>
+    </div>
+
+    <div class="feature">
+      <div>
+        <span class="pill pill-q">Q2–Q4 2027</span>
+        <h3>Транспорт и маршруты — сопровождение в дороге</h3>
+        <p class="muted">Строит сложный маршрут с остановками и сопровождает в пути.</p>
+        <ul>
+          <li>Выбирает способ добраться с учётом пробок, времени и цены</li>
+          <li>Комбинированные маршруты: «построй маршрут домой с заездом на заправку»</li>
+          <li>Предсказывает остановку: «заедем в кофейню по дороге на работу?»</li>
+          <li>Меняет маршрут на ходу: «впереди пробка — предлагаю объехать»</li>
+        </ul>
+        <div class="ex"><b>Пример</b>«На чём быстрее до вокзала?» → сравнение вариантов с временем и ценой</div>
+        <div class="note" style="margin-top:10px"><b>Вызов.</b> Голосовое сопровождение в маршруте озвучкой известных дикторов (Матроскин, Бурунов) — нужна доступность технологии.</div>
+      </div>
+      <div class="f-img"><img src="assets/mockups/transport-phones.jpg" alt="Подсказки в поездке и сопровождение в дороге" data-full="assets/slides/slide-14.jpg"><p class="cap">Подсказки прямо в поездке · сопровождение в дороге</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRACKS -->
+<section id="tracks">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Основные направления</span>
+      <h2>Десять треков и роадмап по кварталам</h2>
+      <p class="lead">Под каждым треком — инициативы с типом (Run / Grow / Transform) и сроками. Расхождения между сроками трека и инициативы в списке помечены. Интеграция Sber SDK ЦА идёт отдельным регуляторным треком.</p>
+    </div>
+
+    <div class="gantt-wrap">
+      <div class="gantt">
+        <div class="qh" style="text-align:left">Инициатива</div>
+        <div class="qh">Q3 2026</div><div class="qh">Q4 2026</div>
+        <div class="qh y27">Q1 2027</div><div class="qh y27">Q2 2027</div><div class="qh y27">Q3 2027</div><div class="qh y27">Q4 2027</div>
+
+        <div class="grp">Платформа помощника · Q3 2026 → Q4 2027</div>
+        <div class="lbl">Собственные компоненты чата <small>ворота года: разблокирует релиз Discovery</small></div><div class="bar t" style="grid-column:2/5">Transform</div>
+        <div class="lbl">Copilot-режим <small>управление картой, поиском, навигатором через промпт</small></div><div class="bar t" style="grid-column:4/7">Transform</div>
+        <div class="lbl">Единая точка входа <small>оркестратор поверх всех агентов</small></div><div class="bar t" style="grid-column:5/8">Transform</div>
+
+        <div class="grp">Развитие Discovery · Q4 2026 → Q3 2027</div>
+        <div class="lbl">Discovery на iOS/Android <small>старт Q2 2026, релиз завершается в Q1 2027</small></div><div class="bar t open-start" style="grid-column:2/5">Transform</div>
+        <div class="lbl">События из Афиши</div><div class="bar g" style="grid-column:3/5">Grow</div>
+        <div class="lbl">Подборки ГИДа в ответах</div><div class="bar g" style="grid-column:3/6">Grow</div>
+        <div class="lbl">Навык составления планов</div><div class="bar t" style="grid-column:3/7">Transform</div>
+
+        <div class="grp">Новые агенты</div>
+        <div class="lbl">Транспортный агент <small>выбор способа + сложные маршруты + проактив</small></div><div class="bar t" style="grid-column:5/8">Transform</div>
+        <div class="lbl">Агент сопровождения <small>госорганизации, «как сделать», справки</small></div><div class="bar t" style="grid-column:5/8">Transform</div>
+        <div class="lbl">Присутствие агента в чатах <small>в списке инициатив Q2 → Q4 — сверить</small></div><div class="bar t" style="grid-column:4/6">Transform</div>
+        <div class="lbl">Совместные брони и планы с близкими</div><div class="bar t" style="grid-column:4/6">Transform</div>
+
+        <div class="grp">Артефакты — память пользователя · Q1 → Q4 2027</div>
+        <div class="lbl">История чатов с агентами</div><div class="bar g" style="grid-column:4/6">Grow</div>
+        <div class="lbl">Планы от Discovery и записи на услуги</div><div class="bar g" style="grid-column:4/7">Grow</div>
+        <div class="lbl">Брони отелей и билеты транспорта <small>Отелло, билетные операторы</small></div><div class="bar g" style="grid-column:6/8">Grow</div>
+
+        <div class="grp">Бронирование и оплата · Q2 → Q4 2027</div>
+        <div class="lbl">Каналы бронирования и собственный инструмент записи</div><div class="bar t" style="grid-column:4/8">Transform</div>
+        <div class="lbl">Оплата и транзакции в чате</div><div class="bar t" style="grid-column:5/7">Transform</div>
+        <div class="lbl">Бронь отелей <small>выход на форму покупки</small></div><div class="bar g" style="grid-column:6/8">Grow</div>
+        <div class="lbl">Бронь билетов транспорта <small>внешняя форма покупки</small></div><div class="bar g" style="grid-column:6/8">Grow</div>
+
+        <div class="grp">Сквозные</div>
+        <div class="lbl">Персонализация <small>в списке инициатив старт Q1 2027</small></div><div class="bar t" style="grid-column:5/8">Transform</div>
+        <div class="lbl">Голосовой ввод и TTS <small>по списку инициатив Q1 → Q4</small></div><div class="bar g" style="grid-column:4/8">Grow</div>
+        <div class="lbl">Монетизация и измерение ценности <small>в списке инициатив до Q4 — сверить</small></div><div class="bar t" style="grid-column:2/6">Transform</div>
+        <div class="lbl">Sber SDK ЦА <small>регуляторный трек, старт Q2 2026</small></div><div class="bar r open-start" style="grid-column:2/8">Run</div>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--brand)"></i>Transform — новый способ взаимодействия</span>
+        <span><i style="background:var(--grow)"></i>Grow — углубление существующего</span>
+        <span><i style="background:var(--run)"></i>Run — обязательства и поддержка</span>
+      </div>
+    </div>
+
+    <div class="load">
+      <div><b>8</b><span>стартов в Q1 2027</span></div>
+      <div class="peak"><b>13</b><span>инициатив в работе в Q2 — пик</span></div>
+      <div><b>12</b><span>в работе в Q3 2027</span></div>
+      <div><b>4</b><span>длинных трека параллельно: платформа, транспорт, сопровождение, оплата</span></div>
+    </div>
+
+    <div class="tracks">
+      <div class="track">
+        <div class="th"><div class="n">01</div><div><h3>Развитие Discovery</h3><div class="q">Q4 2026 → Q3 2027</div></div></div>
+        <p>База — диалоговый поиск мест по намерению, ядро задачи find — запущена в 2026. Трек углубляет ответ агента.</p>
+        <div class="items">
+          <div class="item"><div><b>Релиз на iOS/Android</b><span>пользователь формулирует запрос словами и получает аргументированный подбор вместо каталога</span></div><div class="tags"><span class="pill pill-t">Transform</span><span class="pill pill-q">Q2 26 → Q1 27</span></div></div>
+          <div class="item"><div><b>Подборки ГИДа в ответах</b><span>ответ-подборка из нескольких мест вместо витрины; показ, в какие гиды входит организация. Опирается на массовую генерацию гидов</span></div><div class="tags"><span class="pill pill-g">Grow</span><span class="pill pill-q">Q4 26 → Q2 27</span></div></div>
+          <div class="item"><div><b>События из Афиши</b><span>«что делать сегодня», «концерты на выходных»; интеграция с базой Афиши и переход к покупке билетов у партнёра</span></div><div class="tags"><span class="pill pill-g">Grow</span><span class="pill pill-q">Q4 26 → Q1 27</span></div></div>
+          <div class="item"><div><b>Навык составления планов</b><span>готовый план выходного дня или поездки в ответе; результат уходит в слой памяти</span></div><div class="tags"><span class="pill pill-t">Transform</span><span class="pill pill-q">Q4 26 → Q3 27</span></div></div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="th"><div class="n">02</div><div><h3>Транспортный агент</h3><div class="q">Q2 2027 → Q4 2027 · Transform</div></div></div>
+        <p>Закрывает задачу «добраться» в чате. Выбор способа и сложная маршрутизация — два независимых блока, отсюда объём.</p>
+        <div class="items">
+          <div class="item"><div><b>Выбор способа добраться</b><span>оптимальный вариант с учётом пробок, времени и цены: «как быстрее без пробок», «как дешевле»</span></div></div>
+          <div class="item"><div><b>Сложные маршруты</b><span>мультимодальные, межгородские, с остановками и комбинированные</span></div></div>
+          <div class="item"><div><b>Проактивные подсказки в навигаторе</b></div></div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="th"><div class="n">03</div><div><h3>Агент сопровождения</h3><div class="q">Q2 2027 → Q4 2027 · Transform</div></div></div>
+        <p>Справочные и сопровождающие сценарии — info. Каждый класс навыков — отдельный источник данных; набираются постепенно.</p>
+        <div class="items">
+          <div class="item"><div><b>Навыки госорганизаций</b><span>поликлиники, МФЦ, МВД, ГИБДД</span></div></div>
+          <div class="item"><div><b>Сценарии «как сделать»</b><span>документы, запись, очередь</span></div></div>
+          <div class="item"><div><b>Справочные вопросы</b><span>страховки, налоги, авто</span></div></div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="th"><div class="n">04</div><div><h3>Агент в чатах пользователей</h3><div class="q">Q1 2027 → Q2 2027</div></div></div>
+        <p>Новый канал присутствия: агент работает внутри переписки пользователей, включая групповые чаты.</p>
+        <div class="items">
+          <div class="item"><div><b>Присутствие агента в чатах</b><span>описание требует доформулировки. <span class="flag">В списке инициатив Q2 → Q4 2027, в треках Q1 → Q2 — сверить</span></span></div><div class="tags"><span class="pill pill-t">Transform</span></div></div>
+          <div class="item"><div><b>Совместные брони и планы с близкими</b><span>общий выбор, планирование и бронь на несколько человек в диалоге</span></div><div class="tags"><span class="pill pill-t">Transform</span><span class="pill pill-q">Q1 → Q2 27</span></div></div>
+        </div>
+      </div>
+
+      <div class="track wide">
+        <div class="th"><div class="n">05</div><div><h3>Платформа помощника</h3><div class="q">Q3 2026 → Q4 2027 · фундамент под всех агентов</div></div></div>
+        <p>Как помощник собран и как через него проходит запрос — реализация концепта «Продукт — ИИ-помощник».</p>
+        <div class="grid g3">
+          <div class="item"><div><b>Собственные компоненты чата</b><span>снятие UI-ограничения SDK: бесшовная навигация, карта и места в ответах, аккуратная вёрстка виджетов. Разблокирует релиз Discovery на платформах — ворота всего года</span></div><div class="tags"><span class="pill pill-t">Transform</span><span class="pill pill-q">Q3 26 → Q1 27</span></div></div>
+          <div class="item"><div><b>Единая точка входа</b><span>одна строка принимает любой запрос, определяет намерение, направляет в нужного агента и подбирает формат ответа. Собирается после появления агентов — отсюда поздний срок</span></div><div class="tags"><span class="pill pill-t">Transform</span><span class="pill pill-q">Q2 → Q4 27</span></div></div>
+          <div class="item"><div><b>Copilot-режим</b><span>управление картой, поиском и навигатором через промпт; агент действует поверх экранов: бабл, bottom sheet, встроенная панель</span></div><div class="tags"><span class="pill pill-t">Transform</span><span class="pill pill-q">Q1 → Q3 27</span></div></div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="th"><div class="n">06</div><div><h3>Артефакты — память пользователя</h3><div class="q">Q1 2027 → Q4 2027</div></div></div>
+        <p>Единое хранение созданного и забронированного — слой памяти с общим профилем поверх всех агентов: вернуться, повторить, отменить.</p>
+        <div class="items">
+          <div class="item"><div><b>Планы от Discovery и записи на услуги</b><span>созданное действиями внутри приложения видно в профиле 2ГИС</span></div><div class="tags"><span class="pill pill-g">Grow</span><span class="pill pill-q">Q1 → Q3 27</span></div></div>
+          <div class="item"><div><b>Брони отелей и билеты транспорта</b><span>лента предстоящих событий; каждый источник — отдельная интеграция с синхронизацией статусов</span></div><div class="tags"><span class="pill pill-g">Grow</span><span class="pill pill-q">Q3 → Q4 27</span></div></div>
+          <div class="item"><div><b>История чатов с агентами</b><span>сохранение и доступ к диалогам</span></div><div class="tags"><span class="pill pill-g">Grow</span><span class="pill pill-q">Q1 → Q2 27</span></div></div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="th"><div class="n">07</div><div><h3>Бронирование и оплата</h3><div class="q">Q2 2027 → Q4 2027</div></div></div>
+        <p>Довести от выбора до брони и оплаты — замыкание цикла «поиск → выбор → оплата». Первый этап брони — выход из чата на форму покупки.</p>
+        <div class="items">
+          <div class="item"><div><b>Каналы бронирования и собственный инструмент записи</b><span>новые партнёрские операторы плюс свой инструмент там, где у бизнеса нет онлайн-записи</span></div><div class="tags"><span class="pill pill-t">Transform</span><span class="pill pill-q">Q1 → Q4 27</span></div></div>
+          <div class="item"><div><b>Оплата и транзакции в чате</b><span>услуги, товары, билеты без перехода во внешние сервисы</span></div><div class="tags"><span class="pill pill-t">Transform</span><span class="pill pill-q">Q2 → Q3 27</span></div></div>
+          <div class="item"><div><b>Бронь отелей</b><span>выход на форму покупки, без брони внутри диалога</span></div><div class="tags"><span class="pill pill-g">Grow</span><span class="pill pill-q">Q3 → Q4 27</span></div></div>
+          <div class="item"><div><b>Бронь билетов транспорта</b><span>выход на внешнюю форму покупки</span></div><div class="tags"><span class="pill pill-g">Grow</span><span class="pill pill-q">Q3 → Q4 27</span></div></div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="th"><div class="n">08</div><div><h3>Персонализация</h3><div class="q">Q2 2027 → Q4 2027 · Transform</div></div></div>
+        <p>Формирование и объяснение выдачи под человека и его круг: «были друзья», «подходит вам». <span class="flag">В списке инициатив — Q1 → Q4 2027.</span></p>
+        <div class="items">
+          <div class="item"><div><b>Социальный слой</b><span>друзья в выдаче и карточках: «друзья бывали здесь»</span></div></div>
+          <div class="item"><div><b>Персональные данные и контекст</b><span>CDP как источник, история запросов; единый слой персонализации поверх всех агентов — инфраструктурная работа</span></div></div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="th"><div class="n">09</div><div><h3>Мультимодальность</h3><div class="q">Q2 2027 → Q4 2027</div></div></div>
+        <p>Чат — первая новая модальность, голос — следующий и более важный шаг: самый естественный способ обратиться к помощнику там, где текст недоступен — за рулём, на ходу, hands-free.</p>
+        <div class="items">
+          <div class="item"><div><b>Голосовой ввод и озвучка ответов (TTS)</b><span>полноценный голосовой режим: за рулём и для доступности</span></div><div class="tags"><span class="pill pill-g">Grow</span><span class="pill pill-q">Q1 → Q4 27</span></div></div>
+          <div class="item"><div><b>Понимание изображений и документов</b><span>«разбери этот чек». <span class="flag">Отдельной инициативы в списке 2027 нет — скоуп уточнить</span></span></div></div>
+        </div>
+      </div>
+
+      <div class="track">
+        <div class="th"><div class="n">10</div><div><h3>Монетизация и измерение ценности</h3><div class="q">Q3 2026 → Q2 2027 · Transform</div></div></div>
+        <p>Как агенты приносят выручку и как измеряется их влияние. <span class="flag">В списке инициатив — до Q4 2027, в треках — до Q2 — сверить.</span> Открытый вопрос — передача рекламной части в трек рекламы.</p>
+        <div class="items">
+          <div class="item"><div><b>Реклама в выдаче Discovery</b></div></div>
+          <div class="item"><div><b>Целевые действия в Recovery</b><span>маршрут, звонок, сайт</span></div></div>
+          <div class="item"><div><b>Трекинг ЦД, holdout и A/B</b><span>Resolution Rate, прогрессивные ЦД; бизнес видит и управляет влиянием помощника на метрики</span></div></div>
+        </div>
+      </div>
+
+      <div class="track wide" style="border-style:dashed">
+        <div class="th"><div class="n" style="background:var(--run)">R</div><div><h3>Sber SDK ЦА — регуляторный трек</h3><div class="q">Q2 2026 → Q4 2027 · Run</div></div></div>
+        <p>Внедрение и развитие Sber SDK ЦА: подключение агентов к интеграции, виджеты, интеграция механик, передача потребностей Сберу. Сквозная работа на весь горизонт — параллельный канал, пока часть функций живёт на стороне Сбера. <span class="flag">ДоД инициативы требует уточнения.</span> Подробнее — в разделе про ЦА.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section id="eco" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Интеграции с экосистемой</span>
+      <h2>ГигаЧат, Отелло, Спасибо Тревел, Домклик</h2>
+      <p class="lead">Транзакционные цепочки замыкаются на партнёров; LLM-инфраструктура — мульти-модельная, без моновендорной зависимости.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card partner">
+        <h3>ГигаЧат</h3><span class="role">LLM-инфраструктура и канал дистрибуции в экосистеме</span>
+        <ul>
+          <li><b>Мульти-модельный подход</b> — стратегическая позиция трека: саджесты, ответы, классификация интентов требуют разных моделей. Доля ГигаЧат растёт по мере роста качества; моновендорная зависимость от любой одной LLM — стратегический риск.</li>
+          <li>Бенчмарки новых версий GigaChat на трафике Recovery; доля трафика управляется по качеству и стоимости.</li>
+          <li>Обратная сторона: карты, поиск мест и навигация 2ГИС доступны в GigaChat B2C через формализованные контракты мультиагентного подхода.</li>
+        </ul>
+      </div>
+      <div class="card partner">
+        <h3>Отелло</h3><span class="role">Партнёр по отельным броням в тревел-сценариях</span>
+        <ul>
+          <li>Первый этап в 2027 — выход из чата на форму покупки отеля (Q3–Q4 2027), без брони внутри диалога.</li>
+          <li>Хранение броней отелей в слое памяти с синхронизацией статусов.</li>
+          <li>Целевая картина за горизонтом — глубокая интеграция в сценарий планирования поездки: подбор и бронь внутри диалога.</li>
+        </ul>
+      </div>
+      <div class="card partner">
+        <h3>Спасибо Тревел</h3><span class="role">Партнёр по билетам на транспорт и тревел-транзакциям</span>
+        <ul>
+          <li>Первый этап — выход из чата на форму покупки билетов (Q3–Q4 2027); далее хранение билетов и лента предстоящих поездок.</li>
+          <li>Потенциал связки с оплатой в чате и программой лояльности Спасибо при замыкании транзакций в диалоге. <span class="flag">Скоуп требует проработки с партнёром.</span></li>
+        </ul>
+      </div>
+      <div class="card partner">
+        <h3>Домклик</h3><span class="role">Потенциальный партнёр по сценариям недвижимости</span>
+        <ul>
+          <li>В скоупе 2027 сценариев недвижимости нет: агенты «Недвижимость / Аренда» были в расширенном пуле идей, но не вошли.</li>
+          <li>Кандидат на проработку: поиск и аренда жилья как навык агента — данные Домклик плюс гео-контекст 2ГИС (инфраструктура района, маршруты до работы, друзья рядом). <span class="flag">Решение — по итогам синхронизации с Домклик и оценки ёмкости.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CA -->
+<section id="ca">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Взаимодействие с ЦА · Цифровой Ассистент Сбера</span>
+      <h2>Гибридный подход: свой агент плюс контракты с экосистемой</h2>
+      <p class="lead">Внутри 2ГИС агенты работают нативно на собственной платформе — полный контроль UX и качества, copilot целиком. В экосистеме Сбера — формализованные контракты: 2ГИС отдаёт API и промпты, чтобы карты, поиск мест и навигация были доступны в поверхностях Сбера и ДЗО.</p>
+    </div>
+
+    <div class="ca-stats">
+      <div class="card">
+        <h3>Статус интеграции · август 2026</h3>
+        <div class="mau-row" style="grid-template-columns:1fr 1fr;margin:6px 0 4px">
+          <div><b>1,6 млн</b><span>MAU ИИ-помощника через ЦА</span></div>
+          <div><b>55 тыс.</b><span>DAU ИИ-помощника с ЦА</span></div>
+        </div>
+        <ul>
+          <li><b>Сделано:</b> агент Recovery интегрирован и в проде; реализована целевая e2e-архитектура: пользователь → диалог ЦА SDK в поверхности 2ГИС → АВЧ/ЦА → ШЭС → ИИ Агент Hub 2ГИС. MAU в ЦА: 70 тыс. в марте → 1,6 млн в июле.</li>
+          <li><b>Планы Q3–Q4:</b> запуск Отелло на ЦА с новой архитектурой CrossHub; Widgets из Widget Store; дизайн-система v2; голосовая модальность; разные точки встраивания, не только чат.</li>
+          <li>Два типа интеграции: 2ГИС через ШЭС (легаси, развиваться не будет) и Отелло через CrossHub (пилот, одни из первых).</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Цели ЦА по MAU, млн в квартал</h3>
+        <table>
+          <thead><tr><th>2026</th><th class="c">Q1</th><th class="c">Q2</th><th class="c">Q3</th><th class="c">Q4</th></tr></thead>
+          <tbody>
+            <tr class="goal"><td>Цель</td><td class="c">0,5</td><td class="c">1,5</td><td class="c">3</td><td class="c">5</td></tr>
+            <tr><td>Факт с ЦА</td><td class="c">0,07</td><td class="c">1,0</td><td class="c">1,6</td><td class="c">–</td></tr>
+            <tr><td>Факт без ЦА*</td><td class="c">2,5</td><td class="c">3,0</td><td class="c">4,3</td><td class="c">–</td></tr>
+          </tbody>
+        </table>
+        <p class="footnote">* Аудитория ИИ-ассистента в целом; включает тираж на ЦА.</p>
+        <div class="note" style="margin-top:auto"><b>Позиция.</b> Гео-домен отвечает через 2ГИС. Ключевой риск — неконтролируемая маршрутизация АВЧ: гео-запрос может уйти не в бэкенд 2ГИС, а пользователь не различает, кто ответил.</div>
+      </div>
+    </div>
+
+    <h3 style="margin:40px 0 14px">Ограничения SDK ЦА: почему e2e-сценарии через ЦА не собираются</h3>
+    <div class="grid g3">
+      <div class="card limit"><h4>Чат нельзя разместить внутри экрана</h4><p class="muted" style="font-size:14.5px">Только полный экран или закрыт. Нет шторки, бабла или панели рядом с контентом.</p><div class="prop">Предложение команды SDK: чат в разных размерах → клик по объекту вне чата прячет чат</div></div>
+      <div class="card limit"><h4>Чат и приложение не работают одновременно</h4><p class="muted" style="font-size:14.5px">Ответ остаётся в окне: точки на карту, в выдачу и в навигатор агент не выводит; вне чата агента нет.</p><div class="prop">Предложение команды SDK: копилот на наших компонентах → но он не разворачивается в полный чат</div></div>
+      <div class="card limit"><h4>Диалог не переживает переход</h4><p class="muted" style="font-size:14.5px">Открыл карточку из чата — он закрылся. Цепочка поиск → выбор → бронь распадается на отдельные сессии.</p><div class="prop">Предложение команды SDK: предложений нет</div></div>
+    </div>
+    <div class="grid g2" style="margin-top:14px">
+      <div class="card flat"><h4>Android блокирует архитектура приложения</h4><p style="font-size:14.5px;color:var(--text-2)">UI 2ГИС рендерится через нестандартный Qt/OpenGL, чужой View может быть только поверх. Оптимальное решение — back-to-back интеграция без front-части (пример — ЕЛК). Для iOS решения есть, но экспериментальные: снимают часть ограничений и заметно удорожают разработку.</p></div>
+      <div class="callout"><h3>Вывод</h3><p>Использование SDK — риск для целевого UX. End-to-end сценарии — ядро стратегии 2027 (бронирование и оплата, сопровождение, память) — реализуемы только на собственной платформе помощника; через ЦА они не собираются в принципе. Держим на общем контроле и своевременно принимаем решение, если ограничения не будут решены. До конца 2026 UX реализуем без ЦА — согласовано.</p></div>
+    </div>
+
+    <h3 style="margin:40px 0 14px">Спроса на наши сценарии в поверхностях Сбера нет — проверено на СБОЛе</h3>
+    <div class="sbol">
+      <div class="card">
+        <p style="color:var(--text-2)">Полугодовая выгрузка цифрового ассистента СБОЛ, январь–июль 2026. Подтвердился тезис: 99,9% интентов на поверхности касаются продукта, в котором находится пользователь. Спрос на дискавери, отели и товары — нулевой.</p>
+        <table style="margin-top:8px">
+          <tbody>
+            <tr><td>Сообщений в выгрузке</td><td class="c"><b>8,7 млн</b></td></tr>
+            <tr><td>Прямой спрос на сценарии 2ГИС (банкомат рядом, режим работы, как добраться)</td><td class="c"><b>~3–3,5 тыс./мес</b></td></tr>
+            <tr><td>Потолок со всеми гибридами и саджестами</td><td class="c"><b>~25 тыс./мес · ~1,7%</b></td></tr>
+            <tr><td>Прирост к аудитории Recovery в оптимистичном сценарии</td><td class="c"><b>&lt; 1%</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout"><h3>Вывод</h3><p>Интеграция в поверхности Сбера — не канал роста аудитории, а регуляторное обязательство и часть единой стратегии. Ресурс на неё планируем соответственно.</p></div>
+    </div>
+
+    <h3 style="margin:40px 0 14px">Сценарии с участием агентов разных ДЗО: кейс Домклик × 2ГИС</h3>
+    <div class="card">
+      <p style="color:var(--text-2)">«Подбери варианты квартир в районе Северного речного вокзала». Ожидаемый результат — не только объекты, но и школы и сады, МФЦ и поликлиники, парки, транспорт, досуг рядом. Запрос требует данных двух ДЗО, но ЦА передаёт интент только одному агенту.</p>
+      <div class="flow">
+        <span>Поверхность Домклик</span><i>→</i><span>Интент в ЦА</span><i>→</i><span>АВЧ квалифицирует</span><i>→</i><span>Агент Домклик — основной</span><i>→</i><span class="bad">Ответ только по недвижимости</span>
+      </div>
+      <p style="font-size:14.5px;color:var(--text-2)"><b>Ограничение архитектуры:</b> 1 интент → 1 агент, совместная оркестрация не предусмотрена. Сегодня обогащение гео-контекстом возможно только через прямую интеграцию Домклик — 2ГИС.</p>
+      <div class="note" style="margin-top:6px"><b>Запрос к ЦА.</b> Предоставить решение для ответа на основе взаимодействия нескольких агентов. Известный в индустрии подход — A2A: агент, обрабатывающий запрос, обращается к другим агентам с контекстом, собирает финальный ответ и отвечает за SLA и обработку ошибок.</div>
+    </div>
+
+    <h3 style="margin:40px 0 14px">Реестр рисков и зависимостей с ЦА</h3>
+    <div class="risk-filter" id="riskFilter">
+      <button class="on" data-f="all">Все</button>
+      <button data-f="P0">P0</button>
+      <button data-f="P1">P1</button>
+      <button data-f="open">Ждём ETA</button>
+      <button data-f="done">Done</button>
+    </div>
+    <div class="card table-wrap" style="padding:8px 16px 4px">
+      <table class="risk-table" id="riskTable">
+        <thead><tr><th>Зависимость</th><th>Владелец / статус</th><th>Последствия отсутствия решения</th></tr></thead>
+        <tbody>
+          <tr data-p="P0" data-s="q3"><td><b>Разные варианты встраивания ассистента в ЦА SDK</b></td><td><div class="st"><span class="pill pill-risk">P0 · 2ГИС</span><span class="pill pill-ok">будет в Q3</span></div></td><td class="cons">Требования и mockups отправлены ранее. Согласовано: до конца 2026 реализуем UX без ЦА.</td></tr>
+          <tr data-p="P0" data-s="q3"><td><b>Поддержка Qt на Android для вариантов встраивания</b></td><td><div class="st"><span class="pill pill-risk">P0 · 2ГИС</span><span class="pill pill-warn">с риском в Q3</span></div></td><td class="cons">2ГИС для Android собран на Qt — переиспользовать UI-компоненты в целевом UX ассистента невозможно.</td></tr>
+          <tr data-p="P0" data-s="q3"><td><b>Передача контекста ЦА ↔ Отелло/2ГИС в обе стороны</b></td><td><div class="st"><span class="pill pill-risk">P0 · 2ГИС и Отелло</span><span class="pill pill-ok">будет в Q3</span></div></td><td class="cons">Критерии поиска из диалога → список с преднастроенными фильтрами, и обратно: фильтры из интерфейса → ассистент.</td></tr>
+          <tr data-p="P0" data-s="open"><td><b>SLA времени ответа ЦА</b></td><td><div class="st"><span class="pill pill-risk">P0 · 2ГИС и Отелло</span><span class="pill pill-warn">ждём ETA</span></div></td><td class="cons">Гарантия и процесс обнаружения outage, real-time прозрачность для ДЗО о проблемах с ЦА.</td></tr>
+          <tr data-p="P0" data-s="q3"><td><b>Двустороннее взаимодействие ассистента и поверхности ДЗО</b></td><td><div class="st"><span class="pill pill-risk">P0 · 2ГИС и Отелло</span><span class="pill pill-ok">будет в Q3</span></div></td><td class="cons">Тап по карте → ассистент с информацией по локации; просьба построить маршрут → ассистент сворачивается, карта показывает маршрут.</td></tr>
+          <tr data-p="P0" data-s="done"><td><b>Оттестированный билд CrossHub, спеки деплоя и диаграммы</b></td><td><div class="st"><span class="pill pill-risk">P0 · Отелло</span><span class="pill pill-ok">done</span></div></td><td class="cons">Без билдов заблокирован переход с ШЭС на CrossHub в Q3. CrossHub сделан для Звука и требует доработки под стек Отелло / 2ГИС.</td></tr>
+          <tr data-p="P0" data-s="q3"><td><b>ЦА хранит историю диалога (авторизованная зона)</b></td><td><div class="st"><span class="pill pill-risk">P0 · Отелло</span><span class="pill pill-ok">платформа done · SDK 10.09</span></div></td><td class="cons">SDK обнуляет сессию при каждом закрытии чата. Для неавторизованных (85–90% аудитории) не поддерживается.</td></tr>
+          <tr data-p="P0" data-s="q3"><td><b>Оценка ответа ЦА пользователем</b></td><td><div class="st"><span class="pill pill-risk">P0 · Отелло</span><span class="pill pill-ok">будет в Q3</span></div></td><td class="cons">Без оценки — деградация и слепота по качеству ответов. Телеметрия доступна сотрудникам Отелло напрямую.</td></tr>
+          <tr data-p="P1" data-s="open"><td><b>Описание процесса ИФТ/ПСИ/ПРОМ с учётом Сова и CrossHub</b></td><td><div class="st"><span class="pill pill-warn">P1 · Отелло</span><span class="pill pill-warn">ждём ETA</span></div></td><td class="cons">Нельзя планировать работы без этапов процесса и требований для инфраструктуры и ИБ на стороне 2ГИС.</td></tr>
+          <tr data-p="P1" data-s="q3"><td><b>Голосовая модальность</b></td><td><div class="st"><span class="pill pill-warn">P1 · 2ГИС</span><span class="pill pill-ok">пилот Q3 в СБОЛ · Q4</span></div></td><td class="cons">Нужна для навигации за рулём и на ходу: «заехать на ближайшую заправку».</td></tr>
+          <tr data-p="P1" data-s="open"><td><b>Сбор и передача аналитических данных</b></td><td><div class="st"><span class="pill pill-warn">P1 · 2ГИС и Отелло</span><span class="pill pill-warn">ждём ETA</span></div></td><td class="cons">Задекларированы ручные выгрузки, автоматизация поставки аналитики не определена.</td></tr>
+          <tr data-p="P1" data-s="open"><td><b>SLA решения багов в SDK и ЦА</b></td><td><div class="st"><span class="pill pill-warn">P1 · 2ГИС и Отелло</span><span class="pill pill-warn">ждём ETA</span></div></td><td class="cons">Нет предсказуемого процесса — невозможно обеспечить собственные SLA по критичным багам и фичам.</td></tr>
+          <tr data-p="P1" data-s="open"><td><b>Процесс и требования на релизы агента с ЦА</b></td><td><div class="st"><span class="pill pill-warn">P1 · 2ГИС и Отелло</span><span class="pill pill-warn">ждём ETA</span></div></td><td class="cons">Непонятно, когда нужен полный цикл тестирования, а когда релизы независимы от ЦА — риск багов в проде.</td></tr>
+          <tr data-p="P1" data-s="done"><td><b>Прозрачность архитектуры АВЧ и CrossHub: гарантия попадания гео-запроса в агенты 2ГИС</b></td><td><div class="st"><span class="pill pill-warn">P1 · 2ГИС и Отелло</span><span class="pill pill-ok">done</span></div></td><td class="cons">Задекларировано: запросы от 2ГИС идут напрямую в 2ГИС-агентов. Без описания маршрутизации — риск некорректных ответов.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- CHALLENGES -->
+<section id="challenges" class="sec-alt">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Главные вызовы 2027</span>
+      <h2>Семь вызовов и ответ на каждый</h2>
+    </div>
+    <div class="grid g3 challenges">
+      <div class="card challenge"><h4>UI-ограничения SDK и платформа Android</h4><p>Copilot нереализуем на SDK ЦА: WebView-фрейм, потеря контекста при переходах; на Android — несовместимость с Qt/QML-стеком. Пока собственные компоненты не доехали, релиз Discovery заблокирован.</p><div class="ans">Ответ: собственные компоненты чата — критический путь всего года</div></div>
+      <div class="card challenge"><h4>Перегруз 2027</h4><p>В Q1 стартуют восемь инициатив разом, пик — Q2 (13 в работе), Q3 — 12. Одновременно идут длинные треки: платформа, транспорт, сопровождение, бронирование и оплата.</p><div class="ans">Ответ: управлять скоупом — резать, укорачивать или сдвигать старты</div></div>
+      <div class="card challenge"><h4>Качество и стоимость LLM</h4><p>Галлюцинации моделей против точности данных — основы бренда; неконтролируемая маршрутизация АВЧ Сбера.</p><div class="ans">Ответ: мульти-модельный подход, бенчмарки и продовые метрики качества</div></div>
+      <div class="card challenge"><h4>Зависимость от партнёров в транзакциях</h4><p>Каждый оператор брони и каждый источник броней — отдельная интеграция со своей моделью данных. Скорость роста покрытия зависит от подключения партнёров.</p><div class="ans">Ответ: хедж — собственный инструмент записи</div></div>
+      <div class="card challenge"><h4>Оркестрация семейства агентов</h4><p>Единая точка входа собирается последней и зависит от готовности всех агентов; ошибка роутинга намерений обесценивает отдельных агентов. Риск каскадных задержек.</p><div class="ans">Ответ: общие контракты платформы, оркестратор после появления агентов</div></div>
+      <div class="card challenge"><h4>Разнородность info-сценариев</h4><p>Агент сопровождения — множество несвязанных источников данных: госорганизации, страховки, налоги. Навыки набираются постепенно, быстрого эффекта не будет.</p><div class="ans">Ответ: набирать навыки классами, каждый — отдельный источник и сценарий</div></div>
+      <div class="card challenge"><h4>Измеримость ценности</h4><p>Без трекинга ЦД, holdout и A/B рост использования не конвертируется в аргументы для бизнеса и рекламодателей.</p><div class="ans">Ответ: монетизационный контур идёт параллельно продуктовому, не после</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULT -->
+<section id="result">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Образ результата к концу 2027</span>
+      <h2>Путь от потребности до действия в городе — в одном диалоге</h2>
+      <p class="lead">Одна строка на стартовом экране 2ГИС принимает любой запрос — словами или голосом. Помощник понимает намерение и отвечает в подходящем формате: чат, карта, список, навигатор. Без склейки из пяти приложений.</p>
+    </div>
+    <div class="result">
+      <div class="card">
+        <h3>Для пользователя</h3>
+        <div class="verbs">
+          <div class="verb"><b>Найти</b><span>«где вкусно поесть с детьми» → аргументированный подбор, подборки-гиды, события Афиши, готовый план выходного дня</span></div>
+          <div class="verb"><b>Добраться</b><span>«как быстрее без пробок» → выбор способа и сложные маршруты, проактивные подсказки в пути</span></div>
+          <div class="verb"><b>Сделать</b><span>запись, бронь и оплата прямо в чате — в том числе там, где у бизнеса не было онлайн-записи; совместные брони с близкими; отели и билеты через партнёров</span></div>
+          <div class="verb"><b>Разобраться</b><span>госуслуги, справки, «как сделать» — в диалоге</span></div>
+          <div class="verb"><b>Вернуться</b><span>планы, записи, брони и билеты в одном месте; история чатов; ответы учитывают человека и его круг — «были друзья», «подходит вам»</span></div>
+          <div class="verb"><b>Рядом</b><span>copilot поверх карты, поиска и навигатора; транспортный агент в дороге; Social Agent в переписках с близкими и публичных чатах</span></div>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div class="callout">
+          <h3>Для бизнеса</h3>
+          <ul style="margin:4px 0 0;padding-left:18px;color:rgba(255,255,255,.95);font-size:15px">
+            <li>DAU AI-агентов — на траектории к 1 млн</li>
+            <li>Новая выручка — реклама в выдаче Discovery и целевые действия; влияние помощника измеримо и управляемо</li>
+            <li>Локальному бизнесу — агент как канал живого спроса; собственный инструмент записи открывает онлайн-запись компаниям без витрины</li>
+            <li>Экосистеме Сбера — гео-функционал 2ГИС через контракты мультиагентного подхода; транзакции замыкаются на Отелло, Спасибо Тревел, Афишу</li>
+          </ul>
+        </div>
+        <div class="card flat">
+          <h4>Стратегически</h4>
+          <p style="font-size:15px;color:var(--text-2)">2ГИС закрепляется как end-to-end помощник городской жизни: от ответа к действию, от каталога к диалогу.</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin:44px 0 12px">Открытые вопросы — сверить перед публикацией</h3>
+    <div class="card">
+      <ul class="oq" style="margin:0;padding-left:18px;font-size:15px">
+        <li><b>Агент в чатах пользователей:</b> в списке инициатив сроки Q2 → Q4 2027, в треках Q1 → Q2 2027. Описание требует доформулировки.</li>
+        <li><b>Монетизация и измерение ценности:</b> в списке инициатив до Q4 2027, в треках до Q2 2027. Открыт вопрос передачи рекламной части в трек рекламы.</li>
+        <li><b>Персонализация и голос:</b> в списке инициатив старт Q1 2027, в треках Q2 2027.</li>
+        <li><b>Понимание изображений и документов:</b> отдельной инициативы в списке 2027 нет — уточнить скоуп.</li>
+        <li><b>Sber SDK ЦА:</b> ДоД инициативы требует уточнения; по P0/P1 зависимостям с ЦА — ряд позиций без ETA.</li>
+        <li><b>План Q1:</b> сроки инициатив не проставлены; у большинства статус «Нужен бриф»; колонки таблицы метрик Booking и цель покрытия 42–45% — уточнить.</li>
+        <li><b>Домклик:</b> включение сценариев недвижимости — по итогам синхронизации и оценки ёмкости. <b>Спасибо Тревел:</b> скоуп интеграции — проработать с партнёром.</li>
+      </ul>
+    </div>
+
+    <h3 style="margin:44px 0 12px">Слайды презентации «ИИ-помощник в 2ГИС» · август 2026</h3>
+    <div class="gallery">
+      <div class="shot"><img src="assets/slides/slide-03.jpg" alt="Слайд 3: ИИ-помощник 2ГИС, метрики" data-full="assets/slides/slide-03.jpg" loading="lazy"><span>3 · Статус помощника</span></div>
+      <div class="shot"><img src="assets/slides/slide-04.jpg" alt="Слайд 4: Recovery" data-full="assets/slides/slide-04.jpg" loading="lazy"><span>4 · Recovery</span></div>
+      <div class="shot"><img src="assets/slides/slide-05.jpg" alt="Слайд 5: Booking" data-full="assets/slides/slide-05.jpg" loading="lazy"><span>5 · Booking</span></div>
+      <div class="shot"><img src="assets/slides/slide-06.jpg" alt="Слайд 6: Товарный" data-full="assets/slides/slide-06.jpg" loading="lazy"><span>6 · Товарный</span></div>
+      <div class="shot"><img src="assets/slides/slide-07.jpg" alt="Слайд 7: Discovery" data-full="assets/slides/slide-07.jpg" loading="lazy"><span>7 · Discovery</span></div>
+      <div class="shot"><img src="assets/slides/slide-11.jpg" alt="Слайд 11: Одна точка входа" data-full="assets/slides/slide-11.jpg" loading="lazy"><span>11 · Одна точка входа</span></div>
+      <div class="shot"><img src="assets/slides/slide-12.jpg" alt="Слайд 12: Помощник в контексте экрана" data-full="assets/slides/slide-12.jpg" loading="lazy"><span>12 · Контекст экрана</span></div>
+      <div class="shot"><img src="assets/slides/slide-13.jpg" alt="Слайд 13: Совместные планы" data-full="assets/slides/slide-13.jpg" loading="lazy"><span>13 · Совместные планы</span></div>
+      <div class="shot"><img src="assets/slides/slide-14.jpg" alt="Слайд 14: Транспорт и маршруты" data-full="assets/slides/slide-14.jpg" loading="lazy"><span>14 · Транспорт</span></div>
+      <div class="shot"><img src="assets/slides/slide-16.jpg" alt="Слайд 16: Статус по интеграции с ЦА" data-full="assets/slides/slide-16.jpg" loading="lazy"><span>16 · Статус ЦА</span></div>
+      <div class="shot"><img src="assets/slides/slide-17.jpg" alt="Слайд 17: Ограничения SDK ЦА" data-full="assets/slides/slide-17.jpg" loading="lazy"><span>17 · Ограничения SDK</span></div>
+      <div class="shot"><img src="assets/slides/slide-18.jpg" alt="Слайд 18: Сценарии с агентами разных ДЗО" data-full="assets/slides/slide-18.jpg" loading="lazy"><span>18 · Агенты ДЗО</span></div>
+      <div class="shot"><img src="assets/slides/slide-20.jpg" alt="Слайд 20: Риски и зависимости с ЦА 1/2" data-full="assets/slides/slide-20.jpg" loading="lazy"><span>20 · Риски ЦА 1/2</span></div>
+      <div class="shot"><img src="assets/slides/slide-21.jpg" alt="Слайд 21: Риски и зависимости с ЦА 2/2" data-full="assets/slides/slide-21.jpg" loading="lazy"><span>21 · Риски ЦА 2/2</span></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b style="color:var(--text)">Источники</b>
+    <ul>
+      <li>Статья «Стратегия AI-агентов 2ГИС на 2027» (версия для Confluence, сборка 2026-08-04) и её база — стратегия-агентов-2027.md с оценками DAU и открытыми вопросами.</li>
+      <li>Презентация «ИИ-помощник в 2ГИС. Статус и планы», август 2026, обновлённые риски (21 слайд) — источник скриншотов и цифр статуса.</li>
+      <li>Концепт «<a href="https://docs.google.com/presentation/d/1GSMcGoya1QHrZ8tv6Rv13IZxGG_R2wWI8jjRrwkxcvM/edit">Видение ИИ-помощника 2ГИС</a>» и документ принципы-и-направления-ai-агентов.md — раздел принципов.</li>
+      <li>Лист «AI-Агенты — треки крупно» таблицы «<a href="https://docs.google.com/spreadsheets/d/1l4oZc8-LxJNzlsPDguJWbKApFCt7XQagcCAoH_aKvoc/edit">Копия 2027 — направления</a>» и строки rnd138–rnd159 таблицы «<a href="https://docs.google.com/spreadsheets/d/1oer-CKeb9dTavZPNQegxiljpZlfGAQM1WU-IHL4LzKQ/edit">Планирование и оценка инициатив 2027</a>» — структура треков и сроки.</li>
+      <li>ограничения-sdk-ца-giga-для-ии-помощника.md и исследование анализ-сбол-агенты-2гис-v2.md — тезисы про e2e и спрос в СБОЛе.</li>
+    </ul>
+    <p>Лендинг собран 20.10.2026 для интенсива «AI-Агенты 2027–2029». Оценки вклада инициатив в DAU намеренно не включены — оставлена только NSM.</p>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-label="Просмотр изображения"><span class="x">×</span><img id="lbImg" alt=""></div>
+
+<script>
+  // lightbox
+  const lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg');
+  document.querySelectorAll('img[data-full]').forEach(img => {
+    img.addEventListener('click', () => { lbImg.src = img.dataset.full; lbImg.alt = img.alt; lb.classList.add('on'); });
+  });
+  lb.addEventListener('click', () => lb.classList.remove('on'));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') lb.classList.remove('on'); });
+
+  // risk filter
+  const rf = document.getElementById('riskFilter'), rows = document.querySelectorAll('#riskTable tbody tr');
+  rf.addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    rf.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
+    const f = b.dataset.f;
+    rows.forEach(r => {
+      let show = true;
+      if (f === 'P0' || f === 'P1') show = r.dataset.p === f;
+      else if (f === 'open') show = r.dataset.s === 'open';
+      else if (f === 'done') show = r.dataset.s === 'done';
+      r.style.display = show ? '' : 'none';
+    });
+  });
+</script>
+</body>
+</html>
